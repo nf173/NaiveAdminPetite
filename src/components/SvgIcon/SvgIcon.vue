@@ -5,8 +5,14 @@
     避免屏幕识读设备抓取
   -->
   <svg
-  :class="svgClass" 
-  :style="size?`width:${size}px;height:${size}px;`:''" aria-hidden="true">
+    aria-hidden="true"
+    :class="svgClass" 
+    :style="{ 
+      width: `${ size }px`, 
+      height: `${ size }px`, 
+      fill: color ? color : 'currentColor' 
+    }"
+  >
     <use :xlink:href="iconName" />
   </svg>
 </template>

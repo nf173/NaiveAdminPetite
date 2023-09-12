@@ -1,43 +1,57 @@
-# Melon
+# <center> Naive Admin Petite </center>
 
-依据个人开发习惯配置的一个基于vite的项目模板。
+> <center> 一款轻量级、高颜值的 Naive UI 后台管理面板，使用 Vite + Vue3 + Pinia 构建，适用于中小型项目快速二次开发
 
-## 路由：<a href="https://router.vuejs.org/zh/">VueRouter</a>
+<a><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/hooozen/hexo-theme-tranquility?label=release&color=orange"></a>
+<a href="https://github.com/hooozen/hexo-theme-tranquility/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hooozen/hexo-theme-tranquility"></a>
 
-## 状态管理：<a href="https://pinia.vuejs.org/zh/">Pinia</a>
 
-## 网络请求：<a href="https://www.axios-http.cn/">Axios</a>
 
-## CSS预编译器: <a href="https://www.sass.hk/">SASS</a>
-## 预置组件:
+演示站：[www.paolos.top](https://www.paolos.top)
 
-### SvgIcon
-基于 vite-plugin-svg-icons 插件封装的 SvgIcon 组件，只需提供与 `/assets/icons/[name].svg` 下同名 `name` 属性，即可显示图标。
 
-```js
-import SvgIcon from '@/components/SvgIcon.vue'
 
-<template>
-  <SvgIcon :name="name" :size="20" :color="color"></SvgIcon>
-</template>
+## 功能
+
+- <font style="background: #eeeeee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font color="#ffffff" style="background: #333333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换
+- 提供`顶部`和`侧边`两种菜单栏模式
+- 整站或特定路由页面锁屏，两种锁屏模式
+- 权限菜单：静态路由 + 动态路由
+- 封装 403、404、500 错误页路由组件
+- 封装 SvgIcon 组件，更简单地使用图标
+- 封装面包屑导航
+- 封装图形验证码组件（需要后端支持）
+- 封装 TabsView 组件，多页标签栏
+- v-markdown 指令，把 `div` 变成 `markdown` 文档吧！
+- pinia 持久化存储
+- 🏗️更多功能正在马不停蹄开发中...
+
+## 项目部署
+### 安装
+**拉取项目**
+```
+git clone https://github.com/nf173/NaiveAdminPetite.git
+```
+**下载依赖**
+
+```
+npm install
 ```
 
-## 预置工具函数:
+### 启动
+```
+npm run dev
 
-### delay.js
-使用 `Promise` 包装的计时器函数。
+VITE v4.3.8  ready in 979 ms
+➜  Local: http://localhost:8888
+```
+默认端口：8888
 
-```js
-import { delay } from '@/utils'
-
-delay(3000).then(res=>{
-  console.log('计时结束！')
-})
+### 打包
+```
+npm run build
 ```
 
-## 安装使用
+## 其他
 
-克隆项目模板：`git clone https://github.com/nf173/Melon.git`
-
-安装依赖：`npm install`
-
+该项目暂为测试版本，欢迎各位提交 Issues，本人倾力长期维护...

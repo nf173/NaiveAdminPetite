@@ -5,37 +5,37 @@
 
 const typeWriter = {
   created(el, binding) {
-    el.classList.add('type-writer');
+    el.classList.add('type-writer')
     if(binding.modifiers.underline) {  // 判断光标样式
-      el.classList.add('type-writer_underline');
+      el.classList.add('type-writer_underline')
     } else {
-      el.classList.add('type-writer_cursor');
+      el.classList.add('type-writer_cursor')
     }
 
-    el.oldText = el.textContent || "";
-    el.textContent = "";
+    el.oldText = el.textContent || ""
+    el.textContent = ""
   },
   mounted(el, binding) {
-    var count = 0;  // 打印文字计数
-    const speed = binding.value || 160;  // 获取打印速度
+    var count = 0  // 打印文字计数
+    const speed = binding.value || 160  // 获取打印速度
     /**
      * 光标颜色继承文本颜色
      */
     const colorInheritance = () => {
-      const color = getComputedStyle(el).color;
-      el.style.setProperty('--bg-color', color);
+      const color = getComputedStyle(el).color
+      el.style.setProperty('--bg-color', color)
     }
-    colorInheritance();
+    colorInheritance()
 
     /**
      * 打印文字
      */
     const typeWriter = () => {
       if (count < el.oldText.length) {
-        el.textContent += el.oldText.charAt(count);
-        count++;
+        el.textContent += el.oldText.charAt(count)
+        count++
       } else {
-        el.isShow = true;
+        el.isShow = true
       }
     }
 
@@ -44,38 +44,38 @@ const typeWriter = {
      */
     const typeWriterReduce = () => {
       if(count > 0) {
-        el.textContent = el.oldText.substring(0, count-1);
-        count--;
+        el.textContent = el.oldText.substring(0, count-1)
+        count--
       } else {
-        el.isShow = false;
+        el.isShow = false
       }
     }
 
     if(binding.modifiers.loop) {  // 判断是否循环打印
       el.timer = setInterval(() => {
-        let backTimer = 0;
-        let backSpeed = 800;
+        let backTimer = 0
+        let backSpeed = 800
         if(el.isShow) {
-          clearTimeout(backTimer);
+          clearTimeout(backTimer)
           backTimer = setTimeout(() => {
-            typeWriterReduce();
-          }, backSpeed);
+            typeWriterReduce()
+          }, backSpeed)
         } else {
-          clearTimeout(backTimer);
+          clearTimeout(backTimer)
           backTimer = setTimeout(() => {
-            typeWriter();
-          }, backSpeed);
+            typeWriter()
+          }, backSpeed)
         }
-      }, speed);
+      }, speed)
     } else {
       el.timer = setInterval(() => {
-        typeWriter();
-      }, speed);
+        typeWriter()
+      }, speed)
     }
   },
   unmounted(el) {
-    clearInterval(el.timer);  // 当组件卸载时清除计时器
+    clearInterval(el.timer)  // 当组件卸载时清除计时器
   }
 }
 
-export default typeWriter;
+export default typeWriter

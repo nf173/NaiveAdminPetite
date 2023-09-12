@@ -1,25 +1,31 @@
 {
-  "name": "melon",
-  "version": "0.0.0",
+  "name": "naive-admin-petite",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
+    "mock": "vite --mode mock --force",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.36",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "^3.3.2",
-    "vue-router": "^4.2.0"
+    "vue-router": "^4.2.0",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "mockjs": "^1.1.0",
     "naive-ui": "^2.34.4",
     "sass": "^1.62.1",
     "unplugin-auto-import": "^0.16.2",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.5",
+    "vite-plugin-mock": "^3.0.0",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }
