@@ -10,13 +10,24 @@
     <div class="header-left">
       <!-- 菜单收起 -->
       <div
+        v-if="!isTopNav"
         class="fold-trigger"
         @click="$emit('update:collapsed', !collapsed)"
       >
         <SvgIcon :name="collapsed ? 'unfold' : 'fold'" size="18" />
       </div>
       <!-- 面包屑导航 -->
-      <HeaderBreadcrumb />
+      <HeaderBreadcrumb v-if="!isTopNav" />
+
+      <Logo v-if="isTopNav" style="margin-left: 17px;" />
+    </div>
+
+    <div class="header-center" style="margin: 0 40px">
+      <AsideMenu
+        v-if="isTopNav"
+        mode="horizontal"
+        :collapsed="collapsed"
+      />
     </div>
 
     <div class="header-right">
@@ -52,6 +63,8 @@
 </template>
 
 <script setup>
+  import Logo from '../Logo/index.vue';
+  import AsideMenu from '../Menu/index';
   import HeaderBreadcrumb from '../Breadcrumb/index';
   import HeaderAvatar from '../Avatar/index';
   import SearchModel from '../Search/index';
@@ -60,9 +73,11 @@
 
   const props = defineProps({
     collapsed: {
-      collapsed: {
-        type: Boolean
-      }
+      type: Boolean
+    },
+    isTopNav: {
+      type: Boolean,
+      default: false
     }
   });
 

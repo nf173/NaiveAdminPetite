@@ -53,8 +53,6 @@
 
   // 菜单项
   const menus = ref([]);
-  // 当前选中菜单项
-  const selectedKey = ref(route.name);
 
   const matched = route.matched;
   const getOpenKeys = matched && matched.length ? matched.map((item) => item.name) : [];

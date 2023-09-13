@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="console">
-    <n-grid x-gap="10" :cols="4">
+    <n-grid x-gap="10" y-gap="10" cols="1 620:2 1040:3 1380:4">
       <!-- 饥荒内存占用 -->
       <n-gi>
         <n-card :bordered="false" style="height: 100%;" hoverable>

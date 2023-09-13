@@ -20,33 +20,21 @@ import path from 'path';
 export default defineConfig(({ command, mode }) => {
   return {
     server: {
-    host: 'localhost',
-    port: 8888,
-    open: true,
-    proxy: {
-      '/api': {
-        // 接口域名
-        target: 'http://localhost:8888/api',
-        // 是否支持跨域
-        changeOrigin: true,
-        // 是否支持 https
-        secure: true,
-        // 重置路径
-        rewrite: (path) => path.replace(/^\/api/, "")
+      host: 'localhost',
+      port: 8888,
+      open: true,
+      proxy: {
+        '/api': {
+          // 接口域名
+          target: 'http://localhost:8888/api',
+          // 是否支持跨域
+          changeOrigin: true,
+          // 是否支持 https
+          secure: true,
+          // 重置路径
+          rewrite: (path) => path.replace(/^\/api/, "")
+        }
       }
-    }
-    // proxy: {
-    //   '/api': {
-    //     // 接口域名
-    //     target: 'http://localhost:3000/api',
-    //     // 是否支持跨域
-    //     changeOrigin: true,
-    //     // 是否支持 https
-    //     secure: true,
-    //     // 重置路径
-    //     rewrite: (path) => path.replace(/^\/api/, "")
-    //   }
-    // }
     },
 
     plugins: [

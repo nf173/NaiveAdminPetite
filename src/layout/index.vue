@@ -19,6 +19,7 @@
       :collapsed="collapsed"
       @collapse="collapsed = true"
       @expand="collapsed = false"
+      v-if="!isTopNav"
     >
       <Logo :collapsed="collapsed" />
       <AsideMenu :collapsed="collapsed" />
@@ -26,9 +27,18 @@
 
     <n-layout>
       <n-layout-header 
-        style="box-shadow: 0 1px 4px #00152914; z-index: 1; position: relative;"
+        style="box-shadow: 0 1px 4px #00152914; 
+        z-index: 1; 
+        position: relative;"
       >
-        <PageHeader v-model:collapsed="collapsed"></PageHeader>
+        <PageHeader v-model:collapsed="collapsed" :is-top-nav="isTopNav">
+          <template #menu>
+            <AsideMenu 
+              mode="horizontal" 
+              :collapsed="collapsed"
+            />
+          </template>
+        </PageHeader>
       </n-layout-header>
 
       <n-layout style="height: calc(100vh - 64px);" embedded>
@@ -66,6 +76,11 @@
   // 侧边栏主题
   const inverted = computed(() => {
     return settingStore.navTheme === 'dark' ? true : false;
+  });
+
+  // 菜单模式
+  const isTopNav = computed(() => {
+    return settingStore.navMode === 'horizontal' ? true : false;
   });
 </script>
 

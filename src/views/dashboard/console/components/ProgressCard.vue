@@ -5,43 +5,41 @@
     content-style="display: flex;" 
     :bordered="false"
   >
-    <n-space :wrap="false">
-      <n-space>
-        <n-progress 
-          type="circle"
-          style="width: 100px;"
-          :color="getColor"
-          :offset-degree="180"
-          :percentage="percentage"
-        >
-          <span style="width: 70px; text-align: center; font-size: 18px;">
-            <n-number-animation 
-              :precision="2" 
-              :from="0" 
-              :to="percentage" 
-            />%
-          </span>
-        </n-progress>
-      </n-space>
-      <n-space vertical>
-        <n-statistic :label="statistic.label">
-          <n-ellipsis>
-            {{ statistic.value }}
-          </n-ellipsis>
-        </n-statistic>
-
-        <n-space v-if="statistic.extra">
-          <n-tag 
-            :bordered="false" 
-            :type="statistic.extra.type" 
-            size="small"
+    <n-space>
+          <n-progress 
+            type="circle"
+            style="width: 100px;"
+            :color="getColor"
+            :offset-degree="180"
+            :percentage="percentage"
           >
-            {{ statistic.extra.name }}
-          </n-tag>
-          <span style="color: #767c82; line-height: 1.8em;" >
-            {{ statistic.extra.value }}
-          </span>
-        </n-space>
+            <span style="width: 70px; text-align: center; font-size: 18px;">
+              <n-number-animation 
+                :precision="2" 
+                :from="0" 
+                :to="percentage" 
+              />%
+            </span>
+          </n-progress>
+    </n-space>
+    <n-space vertical style="min-width: 0; margin-left: 15px;">
+      <n-statistic :label="statistic.label">
+        <n-ellipsis>
+          {{ statistic.value }}
+        </n-ellipsis>
+      </n-statistic>
+
+      <n-space v-if="statistic.extra">
+        <n-tag 
+          :bordered="false" 
+          :type="statistic.extra.type" 
+          size="small"
+        >
+          {{ statistic.extra.name }}
+        </n-tag>
+        <span style="color: #767c82; line-height: 1.8em;" >
+          {{ statistic.extra.value }}
+        </span>
       </n-space>
     </n-space>
   </n-card>

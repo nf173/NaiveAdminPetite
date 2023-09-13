@@ -29,13 +29,21 @@
       <div class="drawer-item">
         <n-switch 
           size="large"
+          checked-value="horizontal"
+          unchecked-value="vertical"
+          v-model:value="settingStore.navMode"
+        />
+      </div>
+
+      <n-divider>导航栏风格</n-divider>
+      <div class="drawer-item">
+        <n-switch 
+          size="large"
           checked-value="dark"
           unchecked-value="light"
           v-model:value="settingStore.navTheme"
         />
       </div>
-
-      <n-divider>导航栏风格</n-divider>
 
       <n-divider>多页标签</n-divider>
       <div class="drawer-item">
@@ -61,8 +69,6 @@ const props = defineProps({
     default: false
   }
 });
-
-const navTheme = ref('');
 </script>
 
 <style lang="scss" scoped>

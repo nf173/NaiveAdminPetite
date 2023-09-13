@@ -34,6 +34,9 @@ export const useSettingStore = defineStore('setting', {
     isTabs
   }),
   actions: {
+    setNavMode(value) {
+      this.navMode = value;
+    },
     setNavTheme(value) {
       this.navTheme = value;
     },
