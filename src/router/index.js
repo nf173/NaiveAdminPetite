@@ -15,12 +15,7 @@ import login from './modules/login';
 
 import dashboard from './modules/dashboard';
 import setting from './modules/setting';
-import player from './modules/player';
-import system from './modules/system';
-import backup from './modules/backup';
-import log from './modules/log';
-import servers from './modules/servers';
-import help from './modules/help';
+import docs from './modules/docs';
 import error from './modules/error';
 
 /* 菜单栏路由 */
@@ -28,12 +23,7 @@ import error from './modules/error';
 export const fixedRoutes = [
   ...dashboard,
   ...setting,
-  ...player,
-  ...backup,
-  ...log,
-  ...servers,
-  ...system,
-  ...help,
+  ...docs,
   ...error,
 ];
 // 动态路由菜单

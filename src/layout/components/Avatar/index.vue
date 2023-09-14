@@ -57,7 +57,7 @@ function handleSelect(key) {
   switch (key) {
     case 'personal':
       router.push({
-        name: 'system_account'
+        name: 'setting_account'
       });
       break;
   

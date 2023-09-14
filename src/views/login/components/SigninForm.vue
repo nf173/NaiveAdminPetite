@@ -101,7 +101,7 @@
   import { useRouter } from 'vue-router';
   import { useUserStore } from '@/stores/modules/user';
   import { useMessage } from 'naive-ui';
-  import { Login } from '@/api-mock/modules/user';
+  import { Login } from '@/api/modules/user';
 
   const router = useRouter();
   const userStore = useUserStore();
@@ -177,7 +177,7 @@
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     loading.value = true;
-    loginFormRef.value.validate(async (errors) => {
+    loginFormRef.value?.validate(async (errors) => {
       if (!errors) {
         const data = { ...loginModel, remember: remember.value };
         await Login(data).then(res => {
@@ -186,9 +186,11 @@
             message.success('登录成功，即将进入系统');
             // 保存 token 信息
             userStore.setToken(res.data.result.token);
-            userStore.setUsername(res.data.result.user.username);
-            userStore.setNickname(res.data.result.user.nickname);
-            userStore.setPhone(res.data.result.user.phone);
+            userStore.setUser({
+              username: res.data.result.user.username,
+              nickname: res.data.result.user.nickname,
+              phone: res.data.result.user.phone,
+            });
             loading.value = false;
             router.push('/');
           } else {

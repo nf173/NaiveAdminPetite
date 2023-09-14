@@ -53,7 +53,7 @@
         />
       </div>
 
-      <n-divider>切换动画</n-divider>
+      <!-- <n-divider>切换动画</n-divider> -->
     </n-drawer-content>
   </n-drawer>
 </template>

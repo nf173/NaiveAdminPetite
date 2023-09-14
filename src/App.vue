@@ -11,17 +11,21 @@
     :locale="locale"
     :date-locle="dateLocle">
     <AppProvider>
-      <RouterView />
+      <ScreenLock v-if="userStore.isLock" />
+      <RouterView v-else />
     </AppProvider>
   </NConfigProvider>
 </template>
 
 <script setup>
   import AppProvider from '@/components/Application/Application.vue';
+  import ScreenLock from './views/lock/lock.vue';
   import { useSettingStore } from '@/stores/modules/setting';
+  import { useUserStore } from '@/stores/modules/user';
   import { lightTheme, darkTheme, zhCN, dateZhCN } from 'naive-ui';
 
   const settingStore = useSettingStore();
+  const userStore = useUserStore();
 
   // 主题
   const themeRef = computed(() => {

@@ -18,6 +18,7 @@ export const createRouterGuards = (router) => {
 
     const menuStore = useMenuStore();
     const userStore = useUserStore();
+    
     // 判断是否登录
     if(!userStore.token && to.name !== 'login') {
       next({ name: 'login' });
@@ -31,7 +32,6 @@ export const createRouterGuards = (router) => {
       return;
     }
 
-    // console.log(to);
     next();
   });
 

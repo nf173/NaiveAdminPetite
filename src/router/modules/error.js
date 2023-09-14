@@ -5,7 +5,6 @@
  * @LastEditors: nanfs
  * @Description: 错误页面路由
  */
-const Error = () => import('@/views/error/index.vue');
 
 export default [
   {
@@ -17,32 +16,28 @@ export default [
         path: '403',
         name: 'error-forbidden',
         hidden: true,
-        component: Error,
+        component: () => import('@/views/error/index.vue'),
         meta: { title: '403' },
       },
       {
         path: '500',
         name: 'error-server-error',
         hidden: true,
-        component: Error,
+        component: () => import('@/views/error/index.vue'),
         meta: { title: '500' },
       },
       {
-        path: ':pathMatch(.*)',
+        path: '/:pathMatch(.*)',
         name: 'error-not-found',
         hidden: true,
-        component: Error,
+        component: () => import('@/views/error/index.vue'),
         meta: { title: '404' },
-      }
+      },
     ],
   },
   {
-    path: '/:pathMatch(.*)',
-    component: Error,
-    hidden: true,
-    beforeEnter(to) {
-      console.log(to);
-      // return { path: to.path, replace: true };
-    },
+    path: '/:pathMatch(.*)*',
+    redirect: '/error',
+    hidden: true
   },
 ]

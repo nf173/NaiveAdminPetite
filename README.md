@@ -13,15 +13,16 @@
 ## 功能
 
 - <font style="background: #eeeeee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font color="#ffffff" style="background: #333333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换 ✅
-- 提供 顶部 - 侧边 两种菜单栏模式
-- 整站或特定路由页面锁屏，两种锁屏模式
+- 提供 顶部 - 侧边 两种菜单栏模式 ✅
+- 整站页面锁屏 ✅
 - 权限菜单：静态路由 + 动态路由 ✅
+- 路由缓存: 在要缓存的路由配置中添加 ```meta: { cache: true }```✅
 - 封装 403、404、500 错误页路由组件 
 - 封装 SvgIcon 组件，更简单地使用图标 ✅
 - 封装面包屑导航 ✅
 - 封装图形验证码组件（需要后端支持）✅
 - 封装 TabsView 组件，多页标签栏 ✅
-- v-markdown 指令，把 `div` 变成 `markdown` 文档吧！
+- 支持 Markdown 预览
 - pinia 持久化存储 ✅
 - 🏗️更多功能正在马不停蹄开发中...
 

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useUserStore } from '../stores/modules/user';
+import { useUserStore } from '@/stores/modules/user';
 
 export const service = axios.create({
   baseURL: '/api',
-  timeout: 50000,
+  timeout: 2000,
   // 跨域是否需使用凭证
   withCredentials: true,  
   headers: {
@@ -11,7 +11,6 @@ export const service = axios.create({
     'X-Requested-With': 'XMLHttpRequest',
   }
 })
-
 
 // 请求拦截器
 service.interceptors.request.use(res => {

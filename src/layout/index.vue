@@ -31,14 +31,7 @@
         z-index: 1; 
         position: relative;"
       >
-        <PageHeader v-model:collapsed="collapsed" :is-top-nav="isTopNav">
-          <template #menu>
-            <AsideMenu 
-              mode="horizontal" 
-              :collapsed="collapsed"
-            />
-          </template>
-        </PageHeader>
+        <PageHeader v-model:collapsed="collapsed" :is-top-nav="isTopNav" />
       </n-layout-header>
 
       <n-layout style="height: calc(100vh - 64px);" embedded>
@@ -46,14 +39,11 @@
         <TabsView v-if="settingStore.isTabs" />
 
         <n-layout-content
-          position="absolute" 
-          style="top: 46px;"
           embedded
           :native-scrollbar="false" 
         >
           <!-- PageMain 主区域 -->
           <PageMain />
-
           <n-back-top :right="100" />
         </n-layout-content>
       </n-layout>
@@ -63,16 +53,17 @@
 
 <script setup>
   import Logo from './components/Logo/index.vue';
-  import AsideMenu from './components/Menu/index';
-  import PageHeader from './components/Header/index';
-  import PageMain from './components/Main/index';
-  import TabsView from './components/Tabs';
+  import AsideMenu from './components/Menu/index.vue';
+  import PageHeader from './components/Header/index.vue';
+  import PageMain from './components/Main/index.vue';
+  import TabsView from './components/Tabs/index.vue';
+
   import { useSettingStore } from '@/stores/modules/setting';
 
   const settingStore = useSettingStore();
 
+  // 是否折叠侧边栏
   const collapsed = ref(false);
-
   // 侧边栏主题
   const inverted = computed(() => {
     return settingStore.navTheme === 'dark' ? true : false;

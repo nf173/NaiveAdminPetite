@@ -7,14 +7,13 @@
       :description="error.description"
     >
       <template #footer>
-        <n-button @click="router.push('/')">找点乐子吧</n-button>
+        <n-button @click="router.push('/')">返回首页</n-button>
       </template>
     </n-result>
   </div>
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();

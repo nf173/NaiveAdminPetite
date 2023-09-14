@@ -5,24 +5,24 @@
  * @LastEditors: nanfs
  * @Description: 
  */
-import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-
+import path from 'path';
 import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { fileURLToPath, URL } from 'node:url';
 import { viteMockServe } from "vite-plugin-mock";
+import { defineConfig } from 'vite';
 
-import path from 'path';
 
 export default defineConfig(({ command, mode }) => {
   return {
+    publicPath: './',
     server: {
-      host: 'localhost',
+      open: true,  
+      host: 'localhost',  // 指定服务器主机名
       port: 8888,
-      open: true,
       proxy: {
         '/api': {
           // 接口域名
@@ -62,9 +62,12 @@ export default defineConfig(({ command, mode }) => {
         symbolId: '[name]'
       }),
       viteMockServe({
-        mockPath: 'mock',
+        mockPath: 'src/mock',
         watchFiles: false,
         localEnabled: command === "serve" && mode === "mock",
+        prodEnabled: true,
+        logger: true,
+        enable: true
       })
     ],
 

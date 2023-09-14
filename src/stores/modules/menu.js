@@ -62,6 +62,7 @@ export const useMenuStore = defineStore('menu', () => {
    */
   const modules = import.meta.glob('@/views/**/*.vue');
   const _transformAsyncRoutes = (asyncRoutes, targetRoutes) => {
+    if(!asyncRoutes) return [];
     asyncRoutes.forEach(route => {
       if(!route.hidden) {
         const tempRoutes = {
@@ -90,36 +91,35 @@ export const useMenuStore = defineStore('menu', () => {
   const generateMenus = async () => {
     // // 方式一
     // 只有固定菜单
-    const menus = getFormatMenus([...fixedRoutes]);
-    setMenus(menus);
+    // const menus = getFormatMenus([...fixedRoutes]);
+    // setMenus(menus);
     
     // // 方式二
     // 固定菜单 + 权限菜单
     // let menus = [];
-    // await GetMenus({
-    //   username: userStore.username
-    // }).then(res => {
-    //   const { code, msg, result } = res.data;
+    await GetMenus({
+      username: userStore.username
+    }).then(res => {
+      const { code, msg, result } = res.data;
 
-    //   if(code === 200) {
-    //     const asyncNativeRoutes = [];
-    //     _transformAsyncRoutes(result.routes, asyncNativeRoutes);
+      const asyncNativeRoutes = [];
 
-    //     // 遍历添加动态路由
-    //     asyncNativeRoutes.forEach(route => router.addRoute(route));
-
-    //     // 获取最终菜单
-    //     menus = getFormatMenus([...fixedRoutes, ...asyncNativeRoutes]);
-    //   } else if(code === 401) {
-    //     menus = getFormatMenus([...fixedRoutes]);
-    //     message.error(msg);
-    //     router.push('/login');
-    //   } else {
-    //     menus = getFormatMenus([...fixedRoutes]);
-    //     message.error('获取权限菜单失败');
-    //   }
-    //   setMenus(menus);
-    // })
+      if(code === 200) {
+        _transformAsyncRoutes(result, asyncNativeRoutes);
+        if(asyncNativeRoutes.length > 0) {
+          // 遍历添加动态路由
+          asyncNativeRoutes.forEach(route => router.addRoute(route))
+        };
+      } else if(code === 401) {
+        message.error(msg);
+        router.push('/login');
+      } else {
+        message.error('获取权限菜单失败');
+      }
+      // 获取最终菜单
+      let menus = getFormatMenus([...fixedRoutes, ...asyncNativeRoutes]);
+      setMenus(menus);
+    })
   }
 
   const setMenus = data => {

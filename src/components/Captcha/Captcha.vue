@@ -15,7 +15,7 @@
 
 <script setup>
   import { ref, onMounted } from 'vue';
-  import { GetCaptcha } from '@/api/modules/auth';
+  import { GetCaptcha } from '@/api/modules/user';
   import ViLoading from '../ViLoading/ViLoading.vue';
 
   const captcha = ref(null);

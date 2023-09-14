@@ -1,8 +1,6 @@
-import typewriter from './modules/typewriter/typewriter'
 
 const directives = {
   // ... 在此处添加其他自定义指令
-  typewriter
 }
 
 /**

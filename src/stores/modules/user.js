@@ -15,32 +15,39 @@ export const useUserStore = defineStore('user', {
       username: '',
       nickname: '',
       phone: '',
-      email: ''
+      email: '',
+      avatar: '',
+      isLock: false,
+      lockPwd: ''
     }
   },
   actions: {
     setToken(value) {
       this.token = value;
     },
-    setUsername(value) {
-      this.username = value;
+    setUser(userInfo) {
+      this.username = userInfo.username;
+      this.nickname = userInfo.nickname;
+      this.phone = userInfo.phone;
+      this.email = userInfo.email;
     },
-    setNickname(value) {
-      this.nickname = value;
+    setLockPwd(value) {
+      this.lockPwd = value;
     },
-    setPhone(value) {
-      this.phone = value;
-    },
-    setEmail(value) {
-      this.email = value;
+    setIsLock(value) {
+      this.isLock = value;
     },
 
     // 退出登录
     logout() {
       this.setToken(null);
-      this.setUsername(null);
-      this.setNickname(null);
-      this.setPhone(null);
+      
+      this.setUser({
+        username: null,
+        nickname: null,
+        phone: null,
+        email: null
+      });
 
       localStorage.removeItem('ACCESS-TOKEN');
       localStorage.removeItem('USER-INFO');
@@ -57,6 +64,10 @@ export const useUserStore = defineStore('user', {
     {
       key: 'USER-INFO',
       paths: ['username', 'nickname', 'phone'],
+    },
+    {
+      key: 'SCREEN-LOCK',
+      paths: ['isLock', 'lockPwd']
     }
   ]
 })

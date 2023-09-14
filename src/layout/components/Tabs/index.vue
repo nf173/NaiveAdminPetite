@@ -238,7 +238,7 @@
 .tabs-view {
   .tags {
     display: flex;
-    padding: 6px 10px 10px 10px;
+    padding: 10px 10px 0 10px;
     .tag-card {
       cursor: pointer;
       display: flex;

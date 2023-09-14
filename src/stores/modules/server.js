@@ -6,7 +6,7 @@
  * @Description: 
  */
 import { defineStore } from 'pinia';
-import { GetCpu, GetMem, GetDisk } from '../../api-mock/modules/server';
+import { GetCpu, GetMem, GetDisk } from '@/api/modules/server';
 export const useServerStore = defineStore('server', () => {
   const cpu = ref(null);
   const mem = ref(null);

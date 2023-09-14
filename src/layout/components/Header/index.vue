@@ -64,12 +64,18 @@
 
 <script setup>
   import Logo from '../Logo/index.vue';
-  import AsideMenu from '../Menu/index';
-  import HeaderBreadcrumb from '../Breadcrumb/index';
-  import HeaderAvatar from '../Avatar/index';
-  import SearchModel from '../Search/index';
-  import SettingDrawer from '../Drawer/index';
-  import { reactive } from 'vue';
+  import AsideMenu from '../Menu/index.vue';
+  import HeaderBreadcrumb from '../Breadcrumb/index.vue';
+  import HeaderAvatar from '../Avatar/index.vue';
+  import SearchModel from '../Search/index.vue';
+  import SettingDrawer from '../Drawer/index.vue';
+  import { useUserStore } from '@/stores/modules/user';
+  import { useMessage } from 'naive-ui';
+  import { useRouter } from 'vue-router';
+
+  const userStore = useUserStore();
+  const router = useRouter();
+  const message = useMessage();
 
   const props = defineProps({
     collapsed: {
@@ -128,6 +134,20 @@
     // 搜索
     if(key === 'search') {
       state.showSearchModal = true;
+    }
+
+    if(key === 'lock') {
+      if(userStore.lockPwd){
+        userStore.setIsLock(true);
+      } else {
+        router.push({ 
+          name: 'setting_account',
+          state: {
+            tabsName: 'securitySetting'
+          }
+        });
+        message.warning('请先设置锁屏密码');
+      }
     }
 
     // 网页全屏

@@ -20,16 +20,12 @@
 <script setup>
   import { RouterView } from 'vue-router';
   import { useRouter } from 'vue-router';
-  // import { appSetting } from '../../../config/website.config';
 
   const router = useRouter();
   const routes = router.getRoutes();
 
   const getToggleAnimation = computed(() => {
     return 'transform';
-    // if(appSetting.isToggleAnimation) {
-    //   return appSetting.toggleAnimationType 
-    // }
   });
 
   const getCacheRoutes = computed(() => {
@@ -48,8 +44,7 @@
 <style lang="scss" scoped>
 .page-main {
   width: 100%;
-  padding: 0 10px 10px 10px;
-  // overflow-y: scroll;
+  padding: 10px;
 
   // 淡入淡出
   .fade-enter-active,
