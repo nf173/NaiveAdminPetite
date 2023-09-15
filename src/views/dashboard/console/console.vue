@@ -48,7 +48,7 @@
 
 <script setup>
   import ProgressCard from './components/ProgressCard.vue';
-  import { useServerStore } from '@/stores/modules/server';
+  import { useServerStore } from '@/stores/server';
 
   const serverStore = useServerStore();
 

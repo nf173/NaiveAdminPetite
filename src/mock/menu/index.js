@@ -9,7 +9,9 @@ export default [
       return {
           code: 200,
           msg: '',
-          result: asyncRoutes
+          result: {
+            routes: asyncRoutes
+          }
         }
     }
   },

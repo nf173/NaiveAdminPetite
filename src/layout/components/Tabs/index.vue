@@ -51,10 +51,10 @@
 <script setup>
   import Draggable from 'vuedraggable';
   import { useRoute, useRouter } from 'vue-router';
-  import { useTabsStore } from '@/stores/modules/tabs';
+  import { useTabsStore } from '@/stores/tabs';
   import { useMessage } from 'naive-ui';
   import { websiteConfig } from '@/config/website.config';
-  import { renderIcon } from '@/utils/modules/renderer';
+  import { renderIcon } from '@/utils/renderer';
   import { nextTick } from 'vue';
 
   const route = useRoute();

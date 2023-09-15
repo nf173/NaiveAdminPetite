@@ -13,10 +13,10 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { fileURLToPath, URL } from 'node:url';
 import { viteMockServe } from "vite-plugin-mock";
-import { defineConfig } from 'vite';
-
+import { defineConfig, loadEnv } from 'vite';
 
 export default defineConfig(({ command, mode }) => {
+  console.log(loadEnv(mode, process.cwd()).VITE_APP_MOCK);
   return {
     publicPath: './',
     server: {
@@ -64,10 +64,9 @@ export default defineConfig(({ command, mode }) => {
       viteMockServe({
         mockPath: 'src/mock',
         watchFiles: false,
-        localEnabled: command === "serve" && mode === "mock",
-        prodEnabled: true,
-        logger: true,
-        enable: true
+        localEnabled: command === 'serve',
+        prodEnabled: command !== 'serve' && true,
+        logger: false
       })
     ],
 
@@ -86,3 +85,4 @@ export default defineConfig(({ command, mode }) => {
     },
   }
 })
+

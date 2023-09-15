@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import _lodash from '@/utils/modules/lodash';
+import _lodash from '@/utils/lodash';
 
 const props = defineProps({
   setupColor: {

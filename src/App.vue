@@ -25,8 +25,8 @@
 <script setup>
   import AppProvider from '@/components/Application/Application.vue';
   import ScreenLock from './views/lock/lock.vue';
-  import { useSettingStore } from '@/stores/modules/setting';
-  import { useUserStore } from '@/stores/modules/user';
+  import { useSettingStore } from '@/stores/setting';
+  import { useUserStore } from '@/stores/user';
   import { lightTheme, darkTheme, zhCN, dateZhCN } from 'naive-ui';
 
   const settingStore = useSettingStore();

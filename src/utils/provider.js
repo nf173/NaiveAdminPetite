@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 import { createDiscreteApi, darkTheme, lightTheme } from 'naive-ui';
-import appSetting from '../../settings/appSetting';
+import appSetting from '../settings/appSetting';
 
 const theme = appSetting.navTheme;
 const configProviderPropsRef = computed(() => ({

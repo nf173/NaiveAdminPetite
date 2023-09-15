@@ -6,9 +6,9 @@
  * @Description: 路由守卫
  */
 
-import { loadingBar } from '@/utils/modules/provider';
-import { useUserStore } from '@/stores/modules/user';
-import { useMenuStore } from '@/stores/modules/menu';
+import { loadingBar } from '@/utils/provider';
+import { useUserStore } from '@/stores/user';
+import { useMenuStore } from '@/stores/menu';
 
 export const createRouterGuards = (router) => {
   // 路由前置守卫

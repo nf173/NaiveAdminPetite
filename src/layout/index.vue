@@ -58,7 +58,7 @@
   import PageMain from './components/Main/index.vue';
   import TabsView from './components/Tabs/index.vue';
 
-  import { useSettingStore } from '@/stores/modules/setting';
+  import { useSettingStore } from '@/stores/setting';
 
   const settingStore = useSettingStore();
 

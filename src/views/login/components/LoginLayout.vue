@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { useConfigStore } from '@/stores/modules/config';
+import { useConfigStore } from '@/stores/config';
 
 const configStore = useConfigStore();
 </script>

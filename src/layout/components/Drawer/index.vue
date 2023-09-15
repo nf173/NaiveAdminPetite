@@ -1,9 +1,9 @@
 <template>
   <n-drawer
     :show="show"
+    :width="280"
     class="setting-drawer"
     placement="right"
-    :width="280"
     @update:show="e => $emit('update:show', e)"
   >
     <n-drawer-content
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { useSettingStore } from '@/stores/modules/setting';
+import { useSettingStore } from '@/stores/setting';
 
 const settingStore = useSettingStore();
 

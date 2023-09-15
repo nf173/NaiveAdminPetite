@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/stores/user';
 
 export const service = axios.create({
   baseURL: '/api',

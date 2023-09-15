@@ -27,8 +27,8 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/modules/user';
-import { renderIcon } from '@/utils/modules/renderer';
+import { useUserStore } from '@/stores/user';
+import { renderIcon } from '@/utils/renderer';
 
 const router = useRouter();
 

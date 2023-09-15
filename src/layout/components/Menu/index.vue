@@ -26,8 +26,8 @@
 <script setup>
   import { nextTick, onMounted } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { useMenuStore } from '@/stores/modules/menu';
-  import { useSettingStore } from '@/stores/modules/setting';
+  import { useMenuStore } from '@/stores/menu';
+  import { useSettingStore } from '@/stores/setting';
 
   // 当前路由
   const route = useRoute();

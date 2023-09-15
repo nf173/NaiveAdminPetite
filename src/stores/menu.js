@@ -8,11 +8,11 @@
 import { defineStore } from 'pinia';
 import { fixedRoutes } from '@/router/index';
 import { GetMenus } from '@/api/modules/menu';
-import { message } from '@/utils/modules/provider';
-import { renderIcon } from '@/utils/modules/renderer';
-import { useUserStore } from '@/stores/modules/user';
+import { message } from '@/utils/provider';
+import { renderIcon } from '@/utils/renderer';
+import { useUserStore } from '@/stores/user';
 
-import router from '../../router/index';
+import router from '@/router/index';
 import Layout from '@/layout/index.vue';
 
 export const useMenuStore = defineStore('menu', () => {
@@ -89,14 +89,7 @@ export const useMenuStore = defineStore('menu', () => {
    * @return {*}
    */
   const generateMenus = async () => {
-    // // 方式一
-    // 只有固定菜单
-    // const menus = getFormatMenus([...fixedRoutes]);
-    // setMenus(menus);
-    
-    // // 方式二
     // 固定菜单 + 权限菜单
-    // let menus = [];
     await GetMenus({
       username: userStore.username
     }).then(res => {
@@ -105,7 +98,7 @@ export const useMenuStore = defineStore('menu', () => {
       const asyncNativeRoutes = [];
 
       if(code === 200) {
-        _transformAsyncRoutes(result, asyncNativeRoutes);
+        _transformAsyncRoutes(result.routes, asyncNativeRoutes);
         if(asyncNativeRoutes.length > 0) {
           // 遍历添加动态路由
           asyncNativeRoutes.forEach(route => router.addRoute(route))

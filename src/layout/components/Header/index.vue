@@ -59,7 +59,7 @@
   import HeaderAvatar from '../Avatar/index.vue';
   import SearchModel from '../Search/index.vue';
   import SettingDrawer from '../Drawer/index.vue';
-  import { useUserStore } from '@/stores/modules/user';
+  import { useUserStore } from '@/stores/user';
   import { useMessage } from 'naive-ui';
   import { useRouter } from 'vue-router';
 

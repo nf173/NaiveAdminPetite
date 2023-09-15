@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-  import { useUserStore } from '@/stores/modules/user';
+  import { useUserStore } from '@/stores/user';
   import { useMessage } from 'naive-ui';
   import { useRouter } from 'vue-router';
 

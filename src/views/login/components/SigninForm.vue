@@ -99,7 +99,7 @@
 
 <script setup>
   import { useRouter } from 'vue-router';
-  import { useUserStore } from '@/stores/modules/user';
+  import { useUserStore } from '@/stores/user';
   import { useMessage } from 'naive-ui';
   import { Login } from '@/api/modules/user';
 
