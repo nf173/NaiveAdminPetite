@@ -6,13 +6,18 @@
  * @Description: 
 -->
 <template>
-  <NConfigProvider 
+  <NConfigProvider
+    style="overflow: hidden;"
     :theme="themeRef"
     :locale="locale"
     :date-locle="dateLocle">
     <AppProvider>
-      <ScreenLock v-if="userStore.isLock" />
-      <RouterView v-else />
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <ScreenLock v-if="userStore.isLock" />
+          <component :is="Component" v-else></component>
+        </transition>
+      </router-view>
     </AppProvider>
   </NConfigProvider>
 </template>
@@ -41,6 +46,17 @@
   const dateLocle = computed(() => {
     return settingStore.language === 'zh' ? dateZhCN : null
   });
-  
 </script>
+
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .8s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
 

@@ -1,4 +1,4 @@
-import logoImage from '@/assets/images/logo.png';
+import logoImage from '@/assets/images/logo2.png';
 
 /* 站点静态配置 */
 export const websiteConfig = Object.freeze({

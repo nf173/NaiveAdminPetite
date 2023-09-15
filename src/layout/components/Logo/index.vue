@@ -5,7 +5,7 @@
       class="logo-img" 
       :class="{ 'mr-2': !collapsed }"
       :src="websiteConfig.logo" 
-      :alt="websiteConfig.loginDesc" 
+      :alt="websiteConfig.loginDesc"
     />
     <h2 
       class="title"

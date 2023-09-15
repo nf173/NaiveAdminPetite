@@ -26,10 +26,9 @@ export const useUserStore = defineStore('user', {
       this.token = value;
     },
     setUser(userInfo) {
-      this.username = userInfo.username;
-      this.nickname = userInfo.nickname;
-      this.phone = userInfo.phone;
-      this.email = userInfo.email;
+      for (const key in userInfo) {
+        this[key] = userInfo[key];
+      }
     },
     setLockPwd(value) {
       this.lockPwd = value;

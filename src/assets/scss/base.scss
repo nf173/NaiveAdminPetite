@@ -8,13 +8,10 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
-  color: var(--n-text-color);
-  background: var(--n-text-color);
-  transition: color 0.3s, background 0.3s;
-  line-height: 1.6;
-  font-size: 16px;
+  line-height: 1.4;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

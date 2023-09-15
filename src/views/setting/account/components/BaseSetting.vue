@@ -16,15 +16,19 @@
         :loading="isUpdating"
         :disabled="isDisabled"
         @click="updateClick"
-      >更新基本信息</n-button>
+      >
+        更新基本信息
+      </n-button>
     </n-form-item>
   </n-form>
 </template>
 
 <script setup>
 import { useUserStore } from '@/stores/modules/user';
+import { useMessage } from 'naive-ui';
 
 const userStore = useUserStore();
+const message = useMessage();
 
 const formValue = reactive({
   nickname: ''
@@ -48,6 +52,10 @@ function updateClick(e) {
   isUpdating.value = true;
   const timer = setTimeout(() => {
     isUpdating.value = false;
+    userStore.setUser({
+      nickname: formValue.nickname
+    });
+    message.success('昵称修改成功');
     clearTimeout(timer);
   }, 2000);
 }

@@ -2,18 +2,15 @@
 
 <center> 一款轻量级、高颜值的 Naive UI 后台管理面板，使用 Vite + Vue3 + Pinia 构建，适用于中小型项目快速二次开发</center>
 
-<center style="margin: 20px 0;">
+<center style="height: 20px; margin: 20px 0;">
 <a href="https://github.com/nf173/NaiveAdminPetite/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nf173/NaiveAdminPetite"></a>
 </center>
 
-
 演示站：[www.naive-admin-petite.site](http://124.221.16.194:80)
-
-
 
 ## 功能
 
-✅ <font style="background: #eeeeee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font color="#ffffff" style="background: #333333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换
+✅ <font style="color: #333; background: #eee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font style="color: #fff; background: #333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换
 ✅ 提供 顶部 - 侧边 两种菜单栏模式 
 ✅ 面包屑导航
 ✅ 支持可拖拽多页标签栏

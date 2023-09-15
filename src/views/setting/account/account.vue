@@ -1,10 +1,3 @@
-<!--
- * @Author: nanfs
- * @Date: 2023-09-10 22:55:58
- * @LastEditTime: 2023-09-11 23:08:17
- * @LastEditors: nanfs
- * @Description: 个人中心页面
--->
 <template>
   <div class="account">
     <n-card :bordered="false">
@@ -31,6 +24,6 @@ import SecuritySetting from './components/SecuritySetting.vue';
 const tabsValue = ref('baseStting');
 
 if (history.state.tabsName) {
-  tabsValue.value = history.state.tabsName
+  tabsValue.value = history.state.tabsName;
 }
 </script>

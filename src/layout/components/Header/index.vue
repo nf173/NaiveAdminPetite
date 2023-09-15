@@ -1,10 +1,3 @@
-<!--
- * @Author: nanfs
- * @Date: 2023-09-07 18:17:37
- * @LastEditTime: 2023-09-10 23:42:41
- * @LastEditors: nanfs
- * @Description: 顶部菜单
--->
 <template>
   <div class="page-header">
     <div class="header-left">
@@ -39,12 +32,9 @@
           :key="tool.name"
         >
           <template #trigger>
-            <div 
-              class="tool" 
-              @click="handleToolClick(tool.name, index)"
-            >
+            <span class="tool" @click="handleToolClick(tool.name, index)">
               <SvgIcon :name="tool.icon" size="20" />
-            </div>
+            </span>
           </template>
           {{ tool.title }}
         </n-tooltip>
@@ -131,28 +121,31 @@
 
   // 工具栏点击
   const handleToolClick = (key, index) => {
-    // 搜索
-    if(key === 'search') {
-      state.showSearchModal = true;
-    }
-
-    if(key === 'lock') {
-      if(userStore.lockPwd){
-        userStore.setIsLock(true);
-      } else {
-        router.push({ 
-          name: 'setting_account',
-          state: {
-            tabsName: 'securitySetting'
-          }
-        });
-        message.warning('请先设置锁屏密码');
-      }
-    }
-
-    // 网页全屏
-    if(key === 'fullscreen') {
-      toggleFullScreen(index);
+    switch (key) {
+      // 搜索框
+      case 'search':
+        state.showSearchModal = true;
+        break;
+      case 'github':
+        window.open('http://124.221.16.194');
+        break;
+      case 'lock':
+        if (userStore.lockPwd) {
+          userStore.setIsLock(true);
+        } else {
+          router.push({
+            name: 'setting_account',
+            state: {
+              tabsName: 'securitySetting'
+            }
+          });
+          message.warning('请先设置锁屏密码');
+        }
+        break;
+      // 网页全屏
+      case 'fullscreen': 
+        toggleFullScreen(index);
+        break;
     }
   }
 

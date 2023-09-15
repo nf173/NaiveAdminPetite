@@ -42,15 +42,11 @@
           </span>
         </div>
       </div>
-      {{ state.inputValue }}
     </template>
   </n-modal>
 </template>
 
 <script setup>
-  import { reactive, watch } from 'vue';
-  import { useDebounceRef } from '@/utils/modules/debounce';
-
   const emit = defineEmits(['update:modelValue']);
 
   const state = reactive({

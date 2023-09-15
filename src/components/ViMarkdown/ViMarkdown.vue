@@ -1,9 +1,12 @@
 <template>
-  <div class="vi-markdown github-markdown-body" v-html="mdText"></div>
+  <div 
+    class="vi-markdown github-markdown-body" 
+    v-html="mdText"
+  />
 </template>
 
 <script setup>
-  import '@/assets/styles/github.css';
+  import '@/assets/css/github.css';
   import { marked } from 'marked';
   
   const props = defineProps({
