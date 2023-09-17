@@ -10,7 +10,7 @@
         <n-avatar
           round
           object-fit="cover"
-          :src="avatar"
+          :src="userStore.avatar"
         />
         <n-ellipsis style="max-width: 80px">
           <n-text class="name">
@@ -29,16 +29,14 @@
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/user';
 import { renderIcon } from '@/utils/renderer';
+import { GetAvatar } from '@/api/modules/user';
+import { useMessage } from 'naive-ui';
 
 const router = useRouter();
-
+const message = useMessage();
 const userStore = useUserStore();
 
 const show = ref(false);
-
-const avatar = computed(() => {
-  return new URL('@/assets/images/avatar_01.png', import.meta.url).href;
-});
 
 const options = ref([
   {
@@ -76,6 +74,20 @@ function handleClick() {
 function handleClickOutside() {
   show.value = false;
 }
+
+async function getAvatar() {
+  await GetAvatar({ username: userStore.username }).then(res => {
+    if(res.data.code === 200) {
+      userStore.setAvatar(res.data.result.avatar);
+    } else {
+      message.error(res.data.msg);
+    }
+  });
+}
+
+onMounted(async () => {
+  await getAvatar();
+})
 </script>
 
 <style lang="scss" scoped>

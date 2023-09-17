@@ -127,7 +127,7 @@
         state.showSearchModal = true;
         break;
       case 'github':
-        window.open('http://124.221.16.194');
+        window.open('https://github.com/nf173/NaiveAdminPetite');
         break;
       case 'lock':
         if (userStore.lockPwd) {

@@ -6,7 +6,7 @@
 <a href="https://github.com/nf173/NaiveAdminPetite/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nf173/NaiveAdminPetite"></a>
 </center>
 
-演示站：[www.naive-admin-petite.site](http://124.221.16.194:80)
+演示站：[www.naive-admin-petite.site](http://124.221.16.194:80 '颜值超高的后台管理系统')
 
 ## 功能
 
@@ -14,13 +14,13 @@
 ✅ 提供 顶部 - 侧边 两种菜单栏模式 
 ✅ 面包屑导航
 ✅ 支持可拖拽多页标签栏
-✅ 整站页面锁屏 
+✅ 支持页面锁屏 
 ✅ 权限菜单：静态路由 + 动态路由 
 ✅ 页面缓存: 在路由配置中添加 `meta: { cache: true }` 
 ✅ 封装 403、404、500 错误页路由组件 
 ✅ 封装 SvgIcon 组件，更简单地使用图标
 ✅ 图形验证码 (需要后端支持)
-✅ 支持 Markdown 预览
+✅ 支持 Markdown 文档预览
 ✅ pinia 持久化存储
 🏗️ 更多功能正在马不停蹄开发中...
 

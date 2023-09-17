@@ -1,7 +1,7 @@
 <template>
   <div class="control-display">
     <n-avatar round :src="userStore.avatar" :size="100">
-      <span style="font-size: 40px">N</span>
+      <span style="font-size: 40px" v-if="!userStore.avatar">N</span>
     </n-avatar>
     <span
       class="username" 

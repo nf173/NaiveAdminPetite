@@ -1,18 +1,12 @@
 import { token } from '../index';
+import { userTemplate } from './index';
 
-// 用户信息
-const userTemplate = {
-  username: 'admin',
-  password: '123456',
-  nickname: '威尔逊',
-  phone: '13093710522',
-  email: '1272487263@qq.com'
-}
 // 登录验证码
 const captcha = 'qwer';
 
 export default [
   {
+    // 登录接口
     url: '/api/user/login',
     timeout: 200,
     method: 'post',

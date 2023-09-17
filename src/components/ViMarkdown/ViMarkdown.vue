@@ -20,7 +20,7 @@
     return marked(props.text, {
       breaks: true,
       sanitize: true,
-      smartLists: true
+      smartLists: true,
     });
   });
 </script>

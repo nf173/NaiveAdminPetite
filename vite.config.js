@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }) => {
       proxy: {
         '/api': {
           // 接口域名
-          target: 'http://localhost:8888/api',
+          target: 'http://localhost:3000/api',
           // 是否支持跨域
           changeOrigin: true,
           // 是否支持 https
@@ -64,7 +64,7 @@ export default defineConfig(({ command, mode }) => {
       viteMockServe({
         mockPath: 'src/mock',
         watchFiles: false,
-        localEnabled: command === 'serve',
+        localEnabled: command === 'serve' && process.env.NODE_ENV === 'development',
         prodEnabled: command !== 'serve' && true,
         logger: false
       })

@@ -36,6 +36,9 @@ export const useUserStore = defineStore('user', {
     setIsLock(value) {
       this.isLock = value;
     },
+    setAvatar(value) {
+      this.avatar = value;
+    },
 
     // 退出登录
     logout() {
