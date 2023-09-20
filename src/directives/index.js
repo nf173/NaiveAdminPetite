@@ -1,5 +1,7 @@
+import resize from './modules/resize';
 
 const directives = {
+  resize
   // ... 在此处添加其他自定义指令
 }
 

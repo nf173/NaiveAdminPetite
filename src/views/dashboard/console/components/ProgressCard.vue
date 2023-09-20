@@ -6,21 +6,21 @@
     :bordered="false"
   >
     <n-space>
-          <n-progress 
-            type="circle"
-            style="width: 100px;"
-            :color="getColor"
-            :offset-degree="180"
-            :percentage="percentage"
-          >
-            <span style="width: 70px; text-align: center; font-size: 18px;">
-              <n-number-animation 
-                :precision="2" 
-                :from="0" 
-                :to="percentage" 
-              />%
-            </span>
-          </n-progress>
+      <n-progress 
+        type="circle"
+        style="width: 100px;"
+        :color="getColor"
+        :offset-degree="180"
+        :percentage="percentage"
+      >
+        <span style="width: 70px; text-align: center; font-size: 18px;">
+          <n-number-animation 
+            :precision="2" 
+            :from="0" 
+            :to="percentage" 
+          />%
+        </span>
+      </n-progress>
     </n-space>
     <n-space vertical style="min-width: 0; margin-left: 15px;">
       <n-statistic :label="statistic.label">
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import _lodash from '@/utils/lodash';
+import { inRange } from 'lodash';
 
 const props = defineProps({
   setupColor: {
@@ -87,11 +87,11 @@ const getColor = computed(() => {
  * @param {*} value 当前进度值
  */
 function getProgressStatus(value) {
-  if (_lodash.inRange(value, 0, 50)) {
+  if (inRange(value, 0, 50)) {
     return '#18a058';
-  } else if (_lodash.inRange(value, 50, 75)) {
+  } else if (inRange(value, 50, 75)) {
     return '#f0a020';
-  } else if (value === 360 || _lodash.inRange(value, 75, 100)) {
+  } else if (value === 360 || inRange(value, 75, 100)) {
     return '#d03050';
   }
 }

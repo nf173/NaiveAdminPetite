@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-  import Logo from './components/Logo/index.vue';
+  import Logo from '@/components/Logo/index.vue';
   import AsideMenu from './components/Menu/index.vue';
   import PageHeader from './components/Header/index.vue';
   import PageMain from './components/Main/index.vue';

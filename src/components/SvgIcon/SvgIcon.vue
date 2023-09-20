@@ -17,7 +17,7 @@
   </svg>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import 'virtual:svg-icons-register';
 
 const props = defineProps({
@@ -26,7 +26,7 @@ const props = defineProps({
     required: true
   },
   color: {
-    type: String,
+    type: [String, Function],
     default: ''
   },
   size: {

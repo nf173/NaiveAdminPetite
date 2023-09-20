@@ -26,68 +26,64 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/user';
-import { renderIcon } from '@/utils/renderer';
-import { GetAvatar } from '@/api/modules/user';
-import { useMessage } from 'naive-ui';
+  import { useRouter } from 'vue-router';
+  import { useUserStore } from '@/stores/user';
+  import { renderIcon } from '@/utils/renderer';
+  import { GetAvatar } from '@/api/modules/user';
+  import { useMessage } from 'naive-ui';
 
-const router = useRouter();
-const message = useMessage();
-const userStore = useUserStore();
+  const router = useRouter();
+  const message = useMessage();
+  const userStore = useUserStore();
 
-const show = ref(false);
+  const show = ref(false);
 
-const options = ref([
-  {
-    label: '个人设置',
-    key: 'personal',
-    icon: renderIcon('account', { size: '16' })
-  },
-  {
-    label: '退出登录',
-    key: 'logout',
-    icon: renderIcon('logout', { size: '16' })
-  }
-]);
-
-function handleSelect(key) {
-  switch (key) {
-    case 'personal':
-      router.push({
-        name: 'setting_account'
-      });
-      break;
-  
-    case 'logout':
-      userStore.logout();
-      router.push('/login');
-      break;
-  }
-  show.value = false;
-}
-
-function handleClick() {
-  show.value = !show.value;
-}
-
-function handleClickOutside() {
-  show.value = false;
-}
-
-async function getAvatar() {
-  await GetAvatar({ username: userStore.username }).then(res => {
-    if(res.data.code === 200) {
-      userStore.setAvatar(res.data.result.avatar);
-    } else {
-      message.error(res.data.msg);
+  const options = ref([
+    {
+      label: '个人设置',
+      key: 'personal',
+      icon: renderIcon('account', { size: '16' })
+    },
+    {
+      label: '退出登录',
+      key: 'logout',
+      icon: renderIcon('logout', { size: '16' })
     }
-  });
-}
+  ]);
 
-onMounted(async () => {
-  await getAvatar();
-})
+  function handleSelect(key) {
+    switch (key) {
+      case 'personal':
+        router.push({
+          name: 'setting_account'
+        });
+        break;
+    
+      case 'logout':
+        userStore.logout();
+        router.push('/login');
+        break;
+    }
+    show.value = false;
+  }
+
+  function handleClick() {
+    show.value = !show.value;
+  }
+
+  function handleClickOutside() {
+    show.value = false;
+  }
+
+  onMounted(async () => {
+    await GetAvatar().then(res => {
+      if (res.data.code === 200) {
+        userStore.setAvatar(res.data.result.avatar);
+      } else {
+        message.error(res.data.msg);
+      }
+    });
+  })
 </script>
 
 <style lang="scss" scoped>

@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-  import Logo from '../Logo/index.vue';
+  import Logo from '@/components/Logo/index.vue';
   import AsideMenu from '../Menu/index.vue';
   import HeaderBreadcrumb from '../Breadcrumb/index.vue';
   import HeaderAvatar from '../Avatar/index.vue';

@@ -1,15 +1,17 @@
 <template>
   <!-- Logo组件 -->
-  <div class="logo">
+  <div class="logo" :class="mode==='horizontal' ? 'horizontal' : 'vertical'">
     <img
-      class="logo-img" 
+      class="logo-img"
       :class="{ 'mr-2': !collapsed }"
       :src="websiteConfig.logo" 
       :alt="websiteConfig.loginDesc"
+      :style="{ height: iconSize }"
     />
     <h2 
       class="title"
       v-show="!collapsed"
+      :style="{ fontSize: textSize }"
     >
       {{ websiteConfig.title }}
     </h2>
@@ -22,6 +24,18 @@ import { websiteConfig } from '@/config/website.config';
 const props = defineProps({
   collapsed: {
     type: Boolean
+  },
+  mode: {
+    type: String,
+    default: 'horizontal'
+  },
+  textSize: { 
+    type: String,
+    default: ''
+  },
+  iconSize: {
+    type: String,
+    default: ''
   }
 })
 </script>
@@ -35,6 +49,10 @@ const props = defineProps({
     line-height: 64px;
     overflow: hidden;
     white-space: nowrap;
+    &.vertical {
+      height: auto;
+      flex-direction: column;
+    }
 
     .mr-2 {
       margin-right: 0.5em;

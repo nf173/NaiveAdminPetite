@@ -3,9 +3,21 @@ import { userTemplate } from './index';
 
 export default [
   {
+    url: '/api/user',
+    timeout: 200,
+    method: 'post',
+    response: () => {
+      return {
+        code: 200,
+        msg: '用户信息修改成功',
+        result: null
+      }
+    }
+  },
+  {
     // 用户头像
     url: '/api/user/avatar',
-    timeout: 800,
+    timeout: 200,
     method: 'get',
     response: (req) => {
       if(!verifyToken(req.headers.authorization)) {
@@ -23,7 +35,6 @@ export default [
           }
         }
       }
-      
     }
   }
 ];

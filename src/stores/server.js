@@ -5,6 +5,7 @@
  * @LastEditors: nanfs
  * @Description: 
  */
+
 import { defineStore } from 'pinia';
 import { GetCpu, GetMem, GetDisk } from '@/api/modules/server';
 export const useServerStore = defineStore('server', () => {

@@ -8,14 +8,16 @@
 
 演示站：[www.naive-admin-petite.site](http://124.221.16.194:80 '颜值超高的后台管理系统')
 
-## 功能
+
+## 特性
 
 ✅ <font style="color: #333; background: #eee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font style="color: #fff; background: #333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换
 ✅ 提供 顶部 - 侧边 两种菜单栏模式 
 ✅ 面包屑导航
 ✅ 支持可拖拽多页标签栏
 ✅ 支持页面锁屏 
-✅ 权限菜单：静态路由 + 动态路由 
+✅ 基于 Axios 封装的请求函数,以 Promise 形式返回
+✅ 权限菜单：静态路由 + 动态路由(Mock) 
 ✅ 页面缓存: 在路由配置中添加 `meta: { cache: true }` 
 ✅ 封装 403、404、500 错误页路由组件 
 ✅ 封装 SvgIcon 组件，更简单地使用图标
@@ -23,6 +25,7 @@
 ✅ 支持 Markdown 文档预览
 ✅ pinia 持久化存储
 🏗️ 更多功能正在马不停蹄开发中...
+
 
 ## 项目部署
 ### 安装

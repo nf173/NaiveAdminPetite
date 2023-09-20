@@ -7,7 +7,12 @@
 -->
 <template>
   <div class="console">
-    <n-grid x-gap="10" y-gap="10" cols="1 620:2 1040:3 1380:4">
+    <n-grid 
+      x-gap="10" 
+      y-gap="10" 
+      cols="1 1040:2 1380:4"
+      style="margin-bottom: 10px;"
+    >
       <!-- 饥荒内存占用 -->
       <n-gi>
         <n-card :bordered="false" style="height: 100%;" hoverable>
@@ -43,11 +48,40 @@
         />
       </n-gi>
     </n-grid>
+    <n-grid 
+      x-gap="10" 
+      y-gap="10" 
+      cols="620:1 1380:2" 
+      style="margin-bottom: 10px;"
+    >
+      <n-gi>
+        <VisitsCard></VisitsCard>
+      </n-gi>
+      <n-gi>
+        <RankCard></RankCard>
+      </n-gi>
+    </n-grid>
+    <n-grid 
+      x-gap="10" 
+      y-gap="10" 
+      cols="1 1380:4"
+    >
+      <n-gi span="1 930:3">
+        <ServersTable></ServersTable>
+      </n-gi>
+      <n-gi span="1">
+        <MineCard></MineCard>
+      </n-gi>
+    </n-grid>
   </div>
 </template>
 
 <script setup>
   import ProgressCard from './components/ProgressCard.vue';
+  import VisitsCard from './components/VisitsCard.vue';
+  import RankCard from './components/RankCard.vue';
+  import ServersTable from './components/ServersTable.vue';
+  import MineCard from './components/MineCard.vue';
   import { useServerStore } from '@/stores/server';
 
   const serverStore = useServerStore();
@@ -76,7 +110,7 @@
       extra: {
         type: 'info',
         name: '总内存',
-        value: `${serverStore.mem?.free} / ${serverStore.mem?.total} GB`
+        value: `${serverStore.mem?.free ?? '0.00'} / ${serverStore.mem?.total ?? '0.00'} GB`
       }
     }
   });

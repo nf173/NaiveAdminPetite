@@ -9,6 +9,19 @@
     <n-form-item label="昵称" path="nickname">
       <n-input v-model:value="formValue.nickname" placeholder="输入昵称" />
     </n-form-item>
+    <n-form-item label="头像" path="avatar">
+      <n-upload
+        ref="uploadRef"
+        action="/api/user"
+        list-type="image-card"
+        v-model:file-list="fileList"
+        :max="1"
+        :default-upload="false"
+        @change="handleUpload"
+      >
+        点击上传
+      </n-upload>
+    </n-form-item>
     <n-form-item>
       <n-button
         secondary
@@ -42,16 +55,25 @@ const rules = reactive({
   }
 });
 
+const uploadRef = ref(null);
+
+const fileList = ref([]);
+
 const isUpdating = ref(false);
 
 const isDisabled = computed(() => {
   return formValue.nickname ? false : true;
 });
 
+function handleUpload(options) {
+  fileList.value = options.fileList.length;
+}
+
 function updateClick(e) {
   isUpdating.value = true;
   const timer = setTimeout(() => {
     isUpdating.value = false;
+    uploadRef.value?.submit();
     userStore.setUser({
       nickname: formValue.nickname
     });
