@@ -25,11 +25,6 @@ export const createRouterGuards = (router) => {
       return;
     }
 
-    // 当处于锁屏时, 无法跳转路由
-    if(userStore.isLock) {
-      // next(from);
-    }
-
     const hasRoute = router.hasRoute(to.name);
     if(!hasRoute) {
       await menuStore.generateMenus();

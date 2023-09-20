@@ -10,21 +10,7 @@
 
 
 ## 特性
-
-✅ <font style="color: #333; background: #eee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font style="color: #fff; background: #333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换
-✅ 提供 顶部 - 侧边 两种菜单栏模式 
-✅ 面包屑导航
-✅ 支持可拖拽多页标签栏
-✅ 支持页面锁屏 
-✅ 基于 Axios 封装的请求函数,以 Promise 形式返回
-✅ 权限菜单：静态路由 + 动态路由(Mock) 
-✅ 页面缓存: 在路由配置中添加 `meta: { cache: true }` 
-✅ 封装 403、404、500 错误页路由组件 
-✅ 封装 SvgIcon 组件，更简单地使用图标
-✅ 图形验证码 (需要后端支持)
-✅ 支持 Markdown 文档预览
-✅ pinia 持久化存储
-🏗️ 更多功能正在马不停蹄开发中...
+✅ <font style="color: #333; background: #eee; padding: 2px 5px; border-radius: 3px;">亮色</font> - <font style="color: #fff; background: #333; padding: 2px 5px; border-radius: 3px;">暗夜</font> 主题切换 <br>✅ 提供 顶部 - 侧边 两种菜单栏模式 <br>✅ 面包屑导航 <br>✅ 支持可拖拽多页标签栏 <br>✅ 支持页面锁屏 <br>✅ 基于 Axios 封装的请求函数,以 Promise 形式返回 <br>✅ 权限菜单：静态路由 + 动态路由(Mock) <br>✅ 页面缓存: 在路由配置中添加 `meta: { cache: true }` <br>✅ 封装 403、404、500 错误页路由组件 <br>✅ 封装 SvgIcon 组件，更简单地使用图标 <br>✅ 图形验证码 (需要后端支持) <br>✅ 支持 Markdown 文档预览 <br>✅ pinia 持久化存储 <br>🏗️ 更多功能正在马不停蹄开发中...
 
 
 ## 项目部署
@@ -40,7 +26,6 @@ npm install
 ```
 
 ### 启动
-
 **使用mock数据**
 
 ```
@@ -57,5 +42,4 @@ npm run build
 ```
 
 ## 其他
-
 该项目暂为测试版本，欢迎各位提交 Issues，本人倾力长期维护...

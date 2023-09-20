@@ -2,7 +2,12 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 // 黑名单：不需要出现在标签页中的路由
-const blackList = ['login'];
+const blackList = [
+  'login', 
+  'error-forbidden',
+  'error-server-error',
+  'error-not-found'
+];
 
 export const useTabsStore = defineStore('tabs', () => {
   // 标签页列表
