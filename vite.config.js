@@ -1,10 +1,3 @@
-/*
- * @Author: nanfs
- * @Date: 2023-09-04 14:47:08
- * @LastEditTime: 2023-09-12 16:38:31
- * @LastEditors: nanfs
- * @Description: 
- */
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import Components from 'unplugin-vue-components/vite';
@@ -16,27 +9,31 @@ import { viteMockServe } from "vite-plugin-mock";
 import { defineConfig, loadEnv } from 'vite';
 
 export default defineConfig(({ command, mode }) => {
-  console.log(loadEnv(mode, process.cwd()).VITE_APP_MOCK);
   return {
     publicPath: './',
     server: {
       open: true,  
-      host: 'localhost',  // 指定服务器主机名
+      host: 'localhost',
       port: 8888,
       proxy: {
         '/api': {
-          // 接口域名
           target: 'http://localhost:3000/api',
-          // 是否支持跨域
           changeOrigin: true,
-          // 是否支持 https
           secure: true,
-          // 重置路径
           rewrite: (path) => path.replace(/^\/api/, "")
         }
       }
     },
-
+    build: {
+      rollupOptions: {
+        manualChunks(id) {
+          // 打包优化
+          if(id.includes('node_modules')) {
+            return 'vender';
+          }
+        }
+      }
+    },
     plugins: [
       vue(),
       Components({
@@ -56,9 +53,7 @@ export default defineConfig(({ command, mode }) => {
         ],
       }),
       createSvgIconsPlugin({
-        // 指定要缓存的文件夹
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-        // 指定symbolId格式
         symbolId: '[name]'
       }),
       viteMockServe({
@@ -69,18 +64,9 @@ export default defineConfig(({ command, mode }) => {
         logger: false
       })
     ],
-
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
-    },
-
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@import "@/assets/scss/main.scss";`
-        }
       }
     },
   }

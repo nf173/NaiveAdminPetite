@@ -1,0 +1,85 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all .3s ease;
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+
+.slide_top-enter-active,
+.slide_top-leave-active {
+  transition: all .3s ease;
+}
+.slide_top-enter-from,
+.slide_top-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+
+.fade-zoomin-enter-active,
+.fade-zoomin-leave-active {
+  transition: all .3s ease;
+}
+.fade-zoomin-enter-from,
+.fade-zoomin-leave-to {
+  opacity: 0;
+  transform: scale(1.4);
+}
+
+
+/* 页面切换过渡 */
+// 渐隐
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .3s ease;
+}
+
+.fade-leave-to,
+.fade-enter-from {
+  opacity: 0;
+}
+
+// 滑动
+.slide-enter-active,
+.slide-leave-active {
+  transition: all .3s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+// 缩放
+.zoom-enter-active,
+.zoom-leave-active {
+  transition: all .3s ease;
+}
+
+.zoom-leave-to,
+.zoom-enter-from {
+  opacity: 0;
+  transform: scale(0.9);
+}

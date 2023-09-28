@@ -37,10 +37,10 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/user';
+import { useAuthStore } from '@/stores';
 import { useMessage } from 'naive-ui';
 
-const userStore = useUserStore();
+const authStore = useAuthStore();
 const message = useMessage();
 
 const formValue = reactive({
@@ -74,7 +74,7 @@ function updateClick(e) {
   const timer = setTimeout(() => {
     isUpdating.value = false;
     uploadRef.value?.submit();
-    userStore.setUser({
+    authStore.setUserInfo({
       nickname: formValue.nickname
     });
     message.success('昵称修改成功');
@@ -83,6 +83,6 @@ function updateClick(e) {
 }
 
 onMounted(() => {
-  formValue.nickname = userStore.nickname;
+  formValue.nickname = authStore.userInfo?.nickname;
 })
 </script>

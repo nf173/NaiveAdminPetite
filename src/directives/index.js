@@ -1,7 +1,9 @@
 import resize from './modules/resize';
+import inching from './modules/inching';
 
 const directives = {
-  resize
+  resize,
+  inching
   // ... 在此处添加其他自定义指令
 }
 

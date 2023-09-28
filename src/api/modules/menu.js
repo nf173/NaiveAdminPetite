@@ -1,7 +1,7 @@
 import { service } from '../request';
 
-export const GetMenus = params => {
-  return service.get('/menus', {
+export const GetRoutes = params => {
+  return service.get('/routes', {
     params
   });
-}
+};

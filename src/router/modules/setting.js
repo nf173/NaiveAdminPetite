@@ -1,11 +1,3 @@
-/*
- * @Author: nanfs
- * @Date: 2023-09-05 12:39:49
- * @LastEditTime: 2023-09-11 00:08:46
- * @LastEditors: nanfs
- * @Description: 系统管理路由
- */
-
 export default [
   {
     path: '/setting',
@@ -25,7 +17,7 @@ export default [
           icon: 'account',
           cache: false
         },
-        component: () => import('@/views/setting/account/account.vue')
+        component: () => import('@/views/setting/account/index.vue')
       }
     ]
   }

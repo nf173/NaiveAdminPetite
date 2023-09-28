@@ -1,88 +1,70 @@
-<!--
- * @Author: nanfs
- * @Date: 2023-09-04 15:16:19
- * @LastEditTime: 2023-09-11 22:07:10
- * @LastEditors: nanfs
- * @Description: 
--->
 <template>
-  <n-layout class="layout" has-sider embedded>
-    <!-- 侧边菜单 -->
+  <n-layout has-sider class="layout" :inverted="settingStore.menuInverted">
     <n-layout-sider
-      embedded
+      class="layout-sider"
       show-trigger="bar"
       collapse-mode="width"
-      class="layout-sider"
-      :collapsed-width="64"
-      :width="200"
-      :inverted="inverted"
-      :collapsed="collapsed"
-      @collapse="collapsed = true"
-      @expand="collapsed = false"
-      v-if="!isTopNav"
+      v-model:collapsed="settingStore.siderCollapsed"
+      :native-scrollbar="false"
+      :inverted="settingStore.siderInverted"
+      :collapsed-width="sider.collapsedWidth"
+      :width="sider.width"
     >
-      <Logo :collapsed="collapsed" />
-      <AsideMenu :collapsed="collapsed" />
+      <NapLogo />
+      <NapMenu 
+        v-model:collapsed="settingStore.siderCollapsed" 
+        :inverted="settingStore.siderInverted"
+        :collapsed-width="sider.collapsedWidth"
+      />
     </n-layout-sider>
 
-    <n-layout>
-      <n-layout-header 
-        style="box-shadow: 0 1px 4px #00152914; 
-        z-index: 1; 
-        position: relative;"
-      >
-        <PageHeader v-model:collapsed="collapsed" :is-top-nav="isTopNav" />
+    <n-layout-content class="layout-content">
+      <n-layout-header class="layout-content_header" :inverted="settingStore.topInverted">
+        <PageHeader />
       </n-layout-header>
+      
+      <n-layout-content class="layout-content_main" embedded :native-scrollbar="false">
+        <PageMain />
+      </n-layout-content>
+    </n-layout-content>
 
-      <n-layout style="height: calc(100vh - 64px);" embedded>
-        <!-- TabsView 标签栏 -->
-        <TabsView v-if="settingStore.isTabs" />
-
-        <n-layout-content
-          embedded
-          :native-scrollbar="false" 
-        >
-          <!-- PageMain 主区域 -->
-          <PageMain />
-          <n-back-top :right="100" />
-        </n-layout-content>
-      </n-layout>
-    </n-layout>
+    <setting-drawer></setting-drawer>
   </n-layout>
 </template>
 
 <script setup>
-  import Logo from '@/components/Logo/index.vue';
-  import AsideMenu from './components/Menu/index.vue';
-  import PageHeader from './components/Header/index.vue';
-  import PageMain from './components/Main/index.vue';
-  import TabsView from './components/Tabs/index.vue';
-
-  import { useSettingStore } from '@/stores/setting';
+  import NapLogo from '@/components/common/nap-logo/index.vue';
+  import NapMenu from '@/components/common/nap-menu/index.vue';
+  import SettingDrawer from '@/components/business/setting-drawer/index.vue';
+  import PageHeader from './component/page-header/index.vue';
+  import PageMain from './component/page-main/index.vue';
+  import { useSettingStore } from '@/stores';
 
   const settingStore = useSettingStore();
 
-  // 是否折叠侧边栏
-  const collapsed = ref(false);
-  // 侧边栏主题
-  const inverted = computed(() => {
-    return settingStore.navTheme === 'dark' ? true : false;
-  });
-
-  // 菜单模式
-  const isTopNav = computed(() => {
-    return settingStore.navMode === 'horizontal' ? true : false;
+  const sider = reactive({
+    collapsedWidth: 64,
+    width: 270,
   });
 </script>
 
 <style lang="scss" scoped>
   .layout {
     .layout-sider {
-      min-height: 100vh;
-      box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
+      height: 100vh;
+    }
+    .layout-content {
       position: relative;
-      z-index: 13;
-      transition: all 0.2s ease-in-out;
+      .layout-content_header {
+        z-index: 9;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .layout-content_main {
+        margin-top: 64px;
+        height: calc(100vh - 64px);
+      }
     }
   }
 </style>

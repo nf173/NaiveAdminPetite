@@ -48,6 +48,10 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
+  height: 80%;
 }
 </style>

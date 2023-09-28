@@ -36,8 +36,10 @@ export const GetVisits = () => {
  * @description: 获取在线时长排行
  * @returns {Object}
  */
-export const GetRank = () => {
-  return service.get('/server/rank');
+export const GetRank = (params) => {
+  return service.get('/server/rank', {
+    params
+  });
 }
 
 /**

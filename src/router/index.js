@@ -1,55 +1,51 @@
-/*
- * @Author: nanfs
- * @Date: 2023-09-04 14:47:47
- * @LastEditTime: 2023-09-11 00:03:24
- * @LastEditors: nanfs
- * @Description: 
- */
-
 import { createRouter, createWebHistory } from 'vue-router'
-import { createRouterGuards } from './modules/guards';
+import { createRouterGuards } from './guards';
 
 // 引入路由模块
 import root from './modules/root';
 import login from './modules/login';
-
 import dashboard from './modules/dashboard';
 import setting from './modules/setting';
-import docs from './modules/docs';
-import error from './modules/error';
+import document from './modules/document';
+// import error from './modules/error';
 
-/* 菜单栏路由 */
-// 固定路由菜单
+// 固定路由
 export const fixedRoutes = [
+  ...root,
+  ...login,
   ...dashboard,
   ...setting,
-  ...docs,
-  ...error,
+  ...document,
 ];
-// 动态路由菜单
+// 动态路由
 export const asyncRoutes = [];
+
+const routes = [
+  ...fixedRoutes,
+  ...asyncRoutes 
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    ...root,
-    ...login,
-    ...fixedRoutes
-  ],
+  routes: fixedRoutes,
   strict: true,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { left: 0, top: 0 }
+      return { left: 0, top: 0 };
     }
   },
-})
+});
 
+
+/**
+ * @method 挂载路由
+ * @param {*} app 站点实例
+ */
 export function setupRouter(app) {
   app.use(router);
-  // 创建路由守卫
   createRouterGuards(router);
 }
 
-export default router
+export default router;

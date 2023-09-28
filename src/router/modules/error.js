@@ -1,16 +1,10 @@
-/*
- * @Author: nanfs
- * @Date: 2023-09-06 23:06:58
- * @LastEditTime: 2023-09-10 22:38:36
- * @LastEditors: nanfs
- * @Description: 错误页面路由
- */
-
 export default [
   {
     path: '/error',
-    hidden: true,
     component: () => import('@/layout/index.vue'),
+    meta: {
+      hidden: true
+    },
     children: [
       {
         path: '403',

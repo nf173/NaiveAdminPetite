@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useUserStore } from '@/stores/user';
+import { useAuthStore } from '@/stores';
 
 export const service = axios.create({
   baseURL: '/api',
@@ -14,9 +14,9 @@ export const service = axios.create({
 
 // 请求拦截器
 service.interceptors.request.use(res => {
-  const userStore = useUserStore();
-  if(userStore.token) {
-    res.headers.Authorization = userStore.token;
+  const authStore = useAuthStore();
+  if(authStore.token) {
+    res.headers.Authorization = authStore.token;
   }
   return res;
 }, err => {
@@ -26,7 +26,7 @@ service.interceptors.request.use(res => {
 // 响应拦截器
 service.interceptors.response.use(res => {
   if(res.status === 200) {
-    return Promise.resolve(res);
+    return Promise.resolve(res.data);
   } else {
     return Promise.reject(res.data);
   }
