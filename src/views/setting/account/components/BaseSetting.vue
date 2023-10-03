@@ -37,52 +37,52 @@
 </template>
 
 <script setup>
-import { useAuthStore } from '@/stores';
-import { useMessage } from 'naive-ui';
+  import { useAuthStore } from '@/stores';
+  import { useMessage } from 'naive-ui';
 
-const authStore = useAuthStore();
-const message = useMessage();
+  const authStore = useAuthStore();
+  const message = useMessage();
 
-const formValue = reactive({
-  nickname: ''
-});
+  const formValue = reactive({
+    nickname: ''
+  });
 
-const rules = reactive({
-  nickname: {
-    required: true,
-    message: '请输入昵称',
-    trigger: 'blur'
+  const rules = reactive({
+    nickname: {
+      required: true,
+      message: '请输入昵称',
+      trigger: 'blur'
+    }
+  });
+
+  const uploadRef = ref(null);
+
+  const fileList = ref([]);
+
+  const isUpdating = ref(false);
+
+  const isDisabled = computed(() => {
+    return formValue.nickname ? false : true;
+  });
+
+  function handleUpload(options) {
+    fileList.value = options.fileList.length;
   }
-});
 
-const uploadRef = ref(null);
+  function updateClick(e) {
+    isUpdating.value = true;
+    const timer = setTimeout(() => {
+      isUpdating.value = false;
+      uploadRef.value?.submit();
+      authStore.setUserInfo({
+        nickname: formValue.nickname
+      });
+      message.success('昵称修改成功');
+      clearTimeout(timer);
+    }, 2000);
+  }
 
-const fileList = ref([]);
-
-const isUpdating = ref(false);
-
-const isDisabled = computed(() => {
-  return formValue.nickname ? false : true;
-});
-
-function handleUpload(options) {
-  fileList.value = options.fileList.length;
-}
-
-function updateClick(e) {
-  isUpdating.value = true;
-  const timer = setTimeout(() => {
-    isUpdating.value = false;
-    uploadRef.value?.submit();
-    authStore.setUserInfo({
-      nickname: formValue.nickname
-    });
-    message.success('昵称修改成功');
-    clearTimeout(timer);
-  }, 2000);
-}
-
-onMounted(() => {
-  formValue.nickname = authStore.userInfo?.nickname;
-})
+  onMounted(() => {
+    formValue.nickname = authStore.userInfo?.nickname;
+  })
 </script>

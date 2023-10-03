@@ -6,7 +6,7 @@
 <a href="https://github.com/nf173/NaiveAdminPetite/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nf173/NaiveAdminPetite"></a>
 </center>
 
-演示站：[www.naive-admin-petite.site](https://naive-admin-petite.site '颜值超高的后台管理系统')
+演示站：[www.naive-admin-petite.site](https://www.naive-admin-petite.site '颜值超高的后台管理系统')
 
 
 ## 特性

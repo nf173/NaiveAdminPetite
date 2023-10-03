@@ -3,17 +3,21 @@ import { settings } from '@/config';
 
 export const useSettingStore = defineStore('setting', {
   state: () => ({
-    locked: false,
-    lockPwd: '',
+    locked: JSON.parse(localStorage.getItem('LOCKED')),
+    lockPwd: localStorage.getItem('LOCKPWD') || '',
 
     settingDrawerShow: false,
 
     ...settings
   }),
-  persist: [
-    {
-      key: 'SCREEN-LOCK',
-      paths: ['locked', 'lockPwd']
+  actions: {
+    setLocked(value) {
+      this.locked = value;
+      localStorage.setItem('LOCKED', value);
     },
-  ]
+    setLockPwd(value) {
+      this.lockPwd = value;
+      localStorage.setItem('LOCKPWD', value);
+    }
+  }
 });

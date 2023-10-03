@@ -1,5 +1,5 @@
 <template>
-  <div class="page-header" ref="ph">
+  <div class="page-header">
     <div class="page-header_left">
       <n-button text class="fold-btn" @click="handleFoldBtnClick">
         <SvgIcon :name="getFoldName" size="20" />
@@ -39,8 +39,10 @@
   import AccountAvatar from '@/components/business/account-avatar/index.vue';
   import { useSettingStore } from '@/stores';
   import { openFullscreen, closeFullscreen } from '@/utils';
+  import { useMessage } from 'naive-ui';
 
   const settingStore = useSettingStore();
+  const message = useMessage();
 
   const tools = reactive([
     {
@@ -64,7 +66,6 @@
       icon: 'fullscreen'
     }
   ]);
-  const ph = ref(null);
 
   const getFoldName = computed(() => {
     return settingStore.siderCollapsed ? 'unfold' : 'fold';
@@ -83,7 +84,11 @@
         window.open('https://github.com/nf173/NaiveAdminPetite');
         break;
       case 'lock':
-        settingStore.locked = true;
+        if(settingStore.lockPwd) {
+          settingStore.setLocked(true);
+        } else {
+          message.warning('请先设置锁屏密码');
+        }
         break;
       case 'fullscreen':
         fullscreen(index);

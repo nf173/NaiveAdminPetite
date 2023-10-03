@@ -1,6 +1,6 @@
 import { GetVisits } from '@/api';
 import { reactive } from 'vue';
-import { message } from '@/hooks';
+import { Window } from '@/hooks';
 
 /**
  * @method 访问量
@@ -68,7 +68,7 @@ export function usePageView() {
           yAxisData.push(item[1]);
         });
       } else {
-        message.error(res.message);
+        Window.message.error(res.message);
       }
     });
   }

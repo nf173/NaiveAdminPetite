@@ -15,6 +15,7 @@ export default [
         meta: {
           title: '主控台',
           icon: 'computer',
+          affix: true
         },
         component: () => import('@/views/dashboard/console/index.vue'),
       },

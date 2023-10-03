@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { randomNum, randomColor } from '@/utils/common/random';
-import { useAuthStoreHook } from '@/stores';
+import { useAuthStore } from '@/stores';
 
 /**
  * @method 绘制图形验证码
@@ -8,7 +8,7 @@ import { useAuthStoreHook } from '@/stores';
  * @param height - 图形高度
  */
 export function useImageVerify(codeRef, width = 152, height = 40) {
-  const authStore = useAuthStoreHook();
+  const authStore = useAuthStore();
   
   const imgCode = ref('');
 

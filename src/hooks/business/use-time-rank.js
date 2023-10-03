@@ -1,5 +1,5 @@
 import { GetRank } from '@/api';
-import { message } from '@/hooks';
+import { Window } from '@/hooks';
 import { reactive } from 'vue';
 
 /**
@@ -100,7 +100,7 @@ export function useTimeRank(topNum = 5) {
           yAxisData.push(item.username);
         });
       } else {
-        message.error(res.message);
+        Window.message.error(res.message);
       }
     });
   }

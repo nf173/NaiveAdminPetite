@@ -1,6 +1,6 @@
 <template>
   <n-el class="page-footer">
-    <n-space vertical justify="center" align="center">
+    <n-space justify="center" align="center">
       <div class="copyright">
         Copyright ©2023 
         <n-button 
@@ -25,7 +25,13 @@
 </template>
 
 <script setup>
+  function copyrightOpen() {
+    window.open('https://github.com/nf173/NaiveAdminPetite');
+  }
 
+  function recordsOpen() {
+    window.open('https://beian.miit.gov.cn');
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +40,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 10px 0;
+    padding: 15px 0;
     background-color: var(--card-color);
     transition: background .3s ease;
     box-shadow: 0 -1px 4px rgba(75, 75, 75, 0.05); 

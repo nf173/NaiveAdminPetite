@@ -9,6 +9,6 @@ export default [
     meta: {
       hidden: true,
     },
-    redirect: settingStore.baseHome
+    redirect: () => settingStore.baseHome
   }
 ];

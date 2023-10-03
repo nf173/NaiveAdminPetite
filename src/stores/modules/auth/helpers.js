@@ -6,7 +6,8 @@ export function getUserInfo() {
   const emptyInfo = {
     userId: '',
     username: '',
-    userRole: ''
+    userRole: '',
+    nickname: ''
   }
   const userInfo = localStorage.getItem('USER-INFO') || emptyInfo;
   

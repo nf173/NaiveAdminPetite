@@ -24,7 +24,7 @@
     >
       <n-form-item label="锁屏密码">
         <n-input 
-          v-model:value="screenPwdValue" 
+          v-model:value="lockPwd" 
           type="password"
           show-password-on="click"
           placeholder="请输入您的密码" 
@@ -40,37 +40,36 @@
 </template>
 
 <script setup>
-import { useSettingStore } from '@/stores';
-import { useMessage } from 'naive-ui';
+  import { useSettingStore } from '@/stores';
+  import { useMessage } from 'naive-ui';
 
-const settingStore = useSettingStore();
-const message = useMessage();
+  const settingStore = useSettingStore();
+  const message = useMessage();
 
-const showModal = ref(false);
+  const showModal = ref(false);
 
-// 表单值
-// 锁屏密码
-const lockPwd = ref('');
+  // 锁屏密码
+  const lockPwd = ref('');
 
-const isLockPwdExist = computed(() => {
-  return settingStore.lockPwd ? false : true;
-});
+  const isLockPwdExist = computed(() => {
+    return settingStore.lockPwd ? false : true;
+  });
 
 
-function modalOpen() {
-  lockPwd.value = settingStore.lockPwd;
-  showModal.value = true;
-}
-
-function setLockPwd() {
-  if (lockPwd.value) {
-    settingStore.lockPwd = lockPwd.value;
-    showModal.value = false;
-    message.success('锁屏密码设置成功!');
-  } else {
-    message.error('密码不能为空!');
+  function modalOpen() {
+    lockPwd.value = settingStore.lockPwd;
+    showModal.value = true;
   }
-}
+
+  function setLockPwd() {
+    if (lockPwd.value) {
+      settingStore.setLockPwd(lockPwd.value);
+      showModal.value = false;
+      message.success('锁屏密码设置成功');
+    } else {
+      message.error('密码不能为空');
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -12,11 +12,16 @@
       </n-space>
       <!-- 工具栏右侧 -->
       <n-space align="center">
-        <n-button type="success" @click="updateTable">刷新数据</n-button>
+        <n-button type="success" @click="handleUpdateTable">刷新数据</n-button>
         <n-divider vertical />
         <n-tooltip trigger="hover">
           <template #trigger>
-            <SvgIcon name="fullscreen" size="18" style="cursor: pointer;" />
+            <SvgIcon 
+              size="18" 
+              style="cursor: pointer;"
+              :name="fullscreenIcon" 
+              @click="handleFullscreen($root)"
+            />
           </template>
           全屏
         </n-tooltip>
@@ -35,6 +40,9 @@
 </template>
 
 <script setup>
+  import { openFullscreen, closeFullscreen } from '@/utils';
+  import { getCurrentInstance } from 'vue';
+
   const emit = defineEmits(['update:size']);
 
   const props = defineProps({
@@ -43,7 +51,6 @@
       default: 'medium'
     }
   });
-
   const dpSizeOptions = reactive([
     {
       label: "紧密",
@@ -58,8 +65,10 @@
       key: "large",
     },
   ]);
+  const fullscreenIcon = ref('fullscreen');
+  const ins = getCurrentInstance().parent;
 
-  function updateTable() {
+  function handleUpdateTable() {
     
   }
 
@@ -67,9 +76,27 @@
     changeSize(key);
   }
 
+  function handleFullscreen(parent) {
+    // const ins = getCurrentInstance().parent;
+    console.log(ins.refs.NapTable);
+    const isFullscreen = document.fullscreenElement;
+    if (isFullscreen) {
+      closeFullscreen();
+      fullscreenIcon.value = 'fullscreen';
+    } else {
+      openFullscreen(ins.refs.NapTable);
+      fullscreenIcon.value = 'fullscreen_exit';
+    }
+  }
+
   function changeSize(value) {
     emit('update:size', value);
   }
+
+  onMounted(() => {
+    
+    
+  })
 </script>
 
 <style lang="scss" scoped>

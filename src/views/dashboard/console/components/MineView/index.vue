@@ -31,14 +31,14 @@
 </template>
 
 <script setup>
-import Logo from '@/components/Logo/index.vue';
+  import Logo from '@/components/common/nap-logo/index.vue';
 
-const props = defineProps({
-  desc: {
-    type: String,
-    default: '一款轻量级、高颜值的 Naive UI 后台管理面板'
-  }
-});
+  const props = defineProps({
+    desc: {
+      type: String,
+      default: '一款轻量级、高颜值的 Naive UI 后台管理面板'
+    }
+  });
 </script>
 
 <style scoped lang="scss">

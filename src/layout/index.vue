@@ -16,6 +16,7 @@
         :inverted="settingStore.siderInverted"
         :collapsed-width="sider.collapsedWidth"
       />
+      <!-- <PageFooter /> -->
     </n-layout-sider>
 
     <n-layout-content class="layout-content">
@@ -24,8 +25,13 @@
       </n-layout-header>
       
       <n-layout-content class="layout-content_main" embedded :native-scrollbar="false">
+        <NapTabs />
         <PageMain />
       </n-layout-content>
+
+      <n-layout-footer>
+        <PageFooter />
+      </n-layout-footer>
     </n-layout-content>
 
     <setting-drawer></setting-drawer>
@@ -35,9 +41,11 @@
 <script setup>
   import NapLogo from '@/components/common/nap-logo/index.vue';
   import NapMenu from '@/components/common/nap-menu/index.vue';
+  import NapTabs from '@/components/common/nap-tabs/index.vue';
   import SettingDrawer from '@/components/business/setting-drawer/index.vue';
   import PageHeader from './component/page-header/index.vue';
   import PageMain from './component/page-main/index.vue';
+  import PageFooter from './component/page-footer/index.vue';
   import { useSettingStore } from '@/stores';
 
   const settingStore = useSettingStore();

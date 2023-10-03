@@ -1,11 +1,9 @@
-import { loadingBar } from '@/hooks';
-// import { useMenuStore } from '@/stores;
-import { notification } from '@/hooks';
+import { Window } from '@/hooks';
 import { useAuthStore, useSettingStore } from '@/stores';
 
 export const createRouterGuards = (router) => {
   router.beforeEach(async (to, from, next) => {
-    loadingBar.start();
+    Window.loadingBar.start();
 
     const authStore = useAuthStore();
     const settingStore = useSettingStore();
@@ -25,13 +23,13 @@ export const createRouterGuards = (router) => {
     const authStore = useAuthStore();
     
     if(from.name === 'login' && to.name !== 'login') {
-      notification.success({
+      Window.notification.success({
         title: '登录成功',
         content: `欢迎回来，${ authStore.userInfo.username }`,
         duration: 2000
       });
     }
     
-    loadingBar.finish();
+    Window.loadingBar.finish();
   });
 }

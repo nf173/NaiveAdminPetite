@@ -39,17 +39,17 @@
   ]);
   
   const getAvatar = computed(() => {
-    return authStore.userInfo?.nickname[0] || authStore.userInfo?.username[0];
+    return authStore.userInfo.nickname.split('')[0] || authStore.userInfo.username.split('')[0];
   });
 
   const getUsername = computed(() => {
-    return authStore.userInfo?.nickname || authStore.userInfo?.username;
+    return authStore.userInfo.nickname || authStore.userInfo.username;
   });
 
   function handleSelected(key) {
     switch (key) {
       case 'profile':
-        router.push({ name: '/setting/account' });
+        router.push('/setting/account');
         break;
     
       case 'logout':

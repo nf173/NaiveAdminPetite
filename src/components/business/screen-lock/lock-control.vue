@@ -18,6 +18,7 @@
       type="password"
       class="pwd-input"
       placeholder="请输入锁屏密码"
+      show-password-on="mousedown"
       :maxlength="8"
     />
     <div class="btns" justify="space-between">
@@ -29,9 +30,10 @@
 </template>
 
 <script setup>
-  import { useAuthStore } from '@/stores';
+  import { useSettingStore, useAuthStore } from '@/stores';
   import { useMessage } from 'naive-ui';
 
+  const settingStore = useSettingStore();
   const authStore = useAuthStore();
   const message = useMessage();
   const emit = defineEmits(['back']);
@@ -41,13 +43,23 @@
   function handleBackClick() {
     emit('back');
   }
-  function handleRelandingClick() {}
+
+  /**
+   * @method 重新登录
+   */
+  function handleRelandingClick() {
+    authStore.logout();
+  }
+
+  /**
+   * @method 解锁屏幕
+   */
   function handleEnterClick() {
-    if (lockPwd.value === authStore.lockPwd) {
+    if (lockPwd.value === settingStore.lockPwd) {
       message.success('屏幕解锁, 正在进入系统~');
 
       setTimeout(() => {
-        authStore.locked = false;
+        settingStore.setLocked(false);
       }, 500);
     } else {
       message.error('密码错误');

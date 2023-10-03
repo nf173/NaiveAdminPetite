@@ -59,6 +59,7 @@
         <dst-server-list></dst-server-list>
       </n-gi>
       <n-gi span="1">
+        <MineView />
       </n-gi>
     </n-grid>
   </div>
@@ -69,6 +70,7 @@
   import PageView from './components/PageView/index.vue';
   import TimeRank from './components/TimeRank/index.vue';
   import DstServerList from './components/DstServerList/index.vue';
+  import MineView from './components/MineView/index.vue';
   import { useHookServer } from '@/hooks';
 
   const { 

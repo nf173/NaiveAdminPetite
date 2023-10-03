@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { LoginByPwd, LoginByCode } from '@/api';
 import { getToken, getUserInfo } from './helpers';
 import { useSettingStore } from '@/stores';
-import { message } from '@/hooks';
+import { Window } from '@/hooks';
 import router from '@/router';
 
 export const useAuthStore = defineStore('auth', {
@@ -41,7 +41,7 @@ export const useAuthStore = defineStore('auth', {
           const settingStore = useSettingStore();
           router.push(settingStore.baseHome);
         } else {
-          message.error(res.message);
+          Window.message.error(res.message);
         }
       });
     },
@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', {
      */
     async loginByCode(phone, smsCode, imgCode) {
       if(this.imgCode !== imgCode) {
-        message.error('图片验证码错误');
+        Window.message.error('图片验证码错误');
       } else {
         this.isLoginLoading = true;
         await LoginByCode({ phone, smsCode }).then(res => {
@@ -64,7 +64,7 @@ export const useAuthStore = defineStore('auth', {
             const settingStore = useSettingStore();
             router.push(settingStore.baseHome);
           } else {
-            message.error(res.message);
+            Window.message.error(res.message);
           }
         });
       }
@@ -74,6 +74,8 @@ export const useAuthStore = defineStore('auth', {
      * @method 退出登录
      */
     logout() {
+      const settingStore = useSettingStore();
+      settingStore.setLocked(false);
       this.token = null;
       this.userInfo = null;
     }

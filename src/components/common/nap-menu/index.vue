@@ -47,7 +47,6 @@
     () => router.currentRoute.value,
     () => {
       activeKey.value = router.currentRoute.value.name;
-      console.log(activeKey.value);
     }
   )
 

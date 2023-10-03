@@ -7,9 +7,6 @@
       <span class="time">{{ currentTime }}</span>
       <span class="date">{{ currentDate }}</span>
     </div>
-    <div class="gif">
-      <img src="@/assets/images/Abigail.gif" alt="">
-    </div>
   </div>
 </template>
 
@@ -96,15 +93,6 @@
       }
       .date {
         font-size: 40px;
-      }
-    }
-    .gif {
-      position: absolute;
-      right: 3%;
-      bottom: 2%;
-      img {
-        width: 150px;
-        height: auto;
       }
     }
   }

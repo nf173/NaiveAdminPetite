@@ -1,15 +1,16 @@
-import { useSettingStoreHook } from '@/stores';
 import { 
   createDiscreteApi,
   lightTheme,
   darkTheme
 } from "naive-ui";
-
+import { useSettingStoreHook } from '@/stores';
 
 const settingStore = useSettingStoreHook();
+
 const configProviderPropsRef = computed(() => ({
   theme: settingStore.theme === "light" ? lightTheme : darkTheme
 }));
+
 const discreteApi = createDiscreteApi(
   [
     "message", 
@@ -22,7 +23,9 @@ const discreteApi = createDiscreteApi(
   }
 );
 
-export const message = discreteApi.message;
-export const notification = discreteApi.notification;
-export const dialog = discreteApi.dialog;
-export const loadingBar = discreteApi.loadingBar;
+export const Window = {
+  message: discreteApi.message,
+  notification: discreteApi.notification,
+  dialog: discreteApi.dialog,
+  loadingBar: discreteApi.loadingBar
+}

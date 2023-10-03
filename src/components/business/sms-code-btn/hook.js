@@ -1,7 +1,7 @@
 import { GetSmsCode } from '@/api';
 import { REGEXP_PHONE, formatDate, formatTime } from '@/utils'
 import { NButton } from 'naive-ui';
-import { message, notification } from '@/hooks';
+import { Window } from '@/hooks';
 
 /**
  * @method 获取短信验证码
@@ -9,7 +9,7 @@ import { message, notification } from '@/hooks';
  */
 export async function getSmsCode(phone, callback) {
   await GetSmsCode(phone).then(res => {
-    const ntf = notification.create({
+    const ntf = Window.notification.create({
       title: '系统通知',
       content: `短信验证码: ${res.data.code}`,
       meta: currentDateTime(),
@@ -36,10 +36,10 @@ export async function getSmsCode(phone, callback) {
 export function isPhoneValid(phone) {
   let valid = true;
   if (phone === '') {
-    message.error('手机号码不能为空！');
+    Window.message.error('手机号码不能为空！');
     valid = false;
   } else if (!REGEXP_PHONE.test(phone)) {
-    message.error('手机号码格式错误！');
+    Window.message.error('手机号码格式错误！');
     valid = false;
   }
   return valid;

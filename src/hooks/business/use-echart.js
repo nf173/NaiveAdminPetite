@@ -3,8 +3,6 @@ import { useSettingStore } from '@/stores';
 import { unref, watch, computed } from 'vue';
 import { delay } from '@/utils';
 
-const settingStore = useSettingStore();
-
 /**
  * @method 创建Echart实例
  * @param {*} elRef 
@@ -12,6 +10,8 @@ const settingStore = useSettingStore();
  */
 
 export function useEchart(elRef, theme = 'default') {
+  const settingStore = useSettingStore();
+  
   let chartInstance = null;
   const cacheOptions = ref({});
 
